@@ -113,19 +113,83 @@ contract AccountingTest is FarmFixture {
         vm.stopPrank();
     }
 
-    function testMeasuredNetDepositAndUnsupportedOutboundTaxRevert() public {
+    function testTaxedTransfersAreRejectedBeforeTakingPrincipalAndAtExit() public {
         bloom.setFee(100);
+        uint256 before = bloom.balanceOf(alice);
+        vm.prank(alice);
+        vm.expectRevert(RewardLedger.InexactTransfer.selector);
+        farm.deposit(100 ether, alice, 1);
+        assertEq(bloom.balanceOf(alice), before);
+        assertEq(farm.totalShares(), 0);
+        bloom.setFee(0);
         _deposit(alice, 100 ether);
-        assertEq(farm.accountedAssets(), 99 ether);
-        assertEq(farm.totalShares(), 99 ether);
+        bloom.setFee(100);
         vm.startPrank(alice);
         vm.expectRevert();
         farm.withdraw(99 ether, payable(alice), 0);
         vm.stopPrank();
-        assertEq(farm.accountedAssets(), 99 ether);
+        assertEq(farm.accountedAssets(), 100 ether);
         assertEq(treasury.availableFees(address(bloom)), 0);
         bloom.setFee(0);
         _withdrawAll(alice);
+    }
+
+    function testVirtualOffsetsKeepInitialRateAndAtLeastOneMillionQuanta() public {
+        assertEq(farm.virtualShares(), 1e6);
+        assertEq(farm.virtualAssets(), 1e6);
+        MockToken high = new MockToken(24);
+        ERC20Farm highFarm =
+            new ERC20Farm(owner, address(registry), address(treasury), address(bloom), address(high), 24);
+        assertEq(highFarm.virtualShares(), 1e6);
+        assertEq(highFarm.virtualAssets(), 1e12);
+        MockToken low = new MockToken(6);
+        ERC20Farm lowFarm =
+            new ERC20Farm(owner, address(registry), address(treasury), address(bloom), address(low), 6);
+        assertEq(lowFarm.virtualShares(), 1e12);
+        assertEq(lowFarm.virtualAssets(), 1);
+        assertEq(farm.previewDeposit(1), 1);
+        assertEq(highFarm.previewDeposit(1e24), 1e18);
+        assertEq(lowFarm.previewDeposit(1e6), 1e18);
+    }
+
+    /// @dev A single remaining share backed by retained fees is the sanctioned way to raise the share
+    /// price without minting. The offset bounds a later depositor's rounding loss to one quantum.
+    function testRetainedFeeInflationSetupIsUnprofitableAndLossBoundedByOneQuantum() public {
+        uint256 victimDeposit = 100 ether;
+        uint256 attackerDeposit = victimDeposit * 100 / 14 + 2;
+        uint256 attackerBefore = bloom.balanceOf(bob);
+        vm.startPrank(bob);
+        uint256 attackerShares = farm.deposit(attackerDeposit, bob, 0);
+        farm.withdraw(attackerShares - 1, payable(bob), 0);
+        vm.stopPrank();
+        assertEq(farm.totalShares(), 1);
+        assertGt(farm.accountedAssets(), victimDeposit);
+        uint256 quantumValue = (farm.accountedAssets() + farm.virtualAssets()) / (1 + farm.virtualShares());
+        uint256 victimShares = _deposit(alice, victimDeposit);
+        assertGt(victimShares, 900_000);
+        (uint256 gross,,,) = farm.previewRedeem(victimShares);
+        assertGe(gross + quantumValue, victimDeposit);
+        uint256 victimBefore = bloom.balanceOf(alice);
+        _withdrawAll(alice);
+        assertGe(bloom.balanceOf(alice) - victimBefore + quantumValue, victimDeposit * 85 / 100);
+        vm.prank(bob);
+        farm.withdraw(1, payable(bob), 0);
+        assertLt(bloom.balanceOf(bob), attackerBefore);
+        assertEq(farm.totalShares(), 0);
+        assertEq(farm.accountedAssets(), 0);
+
+        // Without an attacker: a 1-wei holder stays in after a large exit, then a small deposit lands.
+        _deposit(bob, 1);
+        uint256 shares = _deposit(alice, 100 ether);
+        vm.prank(alice);
+        farm.withdraw(shares, payable(alice), 0);
+        assertEq(farm.totalShares(), 1);
+        quantumValue =
+            (farm.accountedAssets() + farm.virtualAssets()) / (farm.totalShares() + farm.virtualShares());
+        uint256 carolShares = _deposit(carol, 10 ether);
+        (gross,,,) = farm.previewRedeem(carolShares);
+        assertGe(gross + quantumValue, 10 ether);
+        assertLe(10 ether - gross, 1e14);
     }
 
     function testTokenFailureAndCallbackCannotStealShares() public {
@@ -155,18 +219,18 @@ contract AccountingTest is FarmFixture {
         ERC20Farm large =
             new ERC20Farm(owner, address(registry), address(treasury), address(bloom), address(token), 18);
         _activate(large);
-        uint256 ceiling = type(uint256).max;
+        uint256 ceiling = type(uint256).max - large.virtualAssets();
         token.mint(alice, ceiling - 2);
-        token.mint(bob, 2);
+        token.mint(bob, 3);
         vm.startPrank(alice);
         token.approve(address(large), ceiling);
         large.deposit(ceiling - 2, alice, 1);
         vm.stopPrank();
         vm.startPrank(bob);
-        token.approve(address(large), 2);
+        token.approve(address(large), 3);
         large.deposit(1, bob, 1);
         vm.expectRevert(RewardLedger.AccountingLimit.selector);
-        large.deposit(1, bob, 1);
+        large.deposit(2, bob, 1);
         vm.stopPrank();
         assertEq(large.accountedAssets(), ceiling - 1);
         vm.prank(alice);

@@ -32,6 +32,8 @@ contract ERC20Farm is Farm {
         uint256 beforeBalance = IERC20(asset).balanceOf(address(this));
         IERC20(asset).safeTransferFrom(msg.sender, address(this), assets);
         uint256 received = IERC20(asset).balanceOf(address(this)) - beforeBalance;
+        // Exits require exact transfers, so a taxed receipt is refused before it can take principal.
+        if (received != assets) revert InexactTransfer();
         return _mintShares(beneficiary, received, minSharesOut);
     }
 

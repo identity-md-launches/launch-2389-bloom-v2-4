@@ -85,6 +85,9 @@ contract BloomFactory is Managed {
             f.owner() != owner() || f.registry() != address(this) || f.treasury() != treasury
                 || f.rewardToken() != bloom || f.active() || !f.depositsPaused()
         ) revert InvalidFarm();
+        // Registration is permanent, so a farm must already satisfy every activation precondition that
+        // registration itself does not supply (chain, decimals, pinned dependency runtimes).
+        f.verifyDependencies();
         isFarm[farm] = true;
         farmForAsset[underlying] = farm;
         farms.push(farm);

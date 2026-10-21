@@ -1,94 +1,99 @@
 No files changed, compilation skipped
 
-Ran 10 tests for test/ETH.t.sol:ETHTest
-[PASS] testBothDeliveryPathsFailAtomically() (gas: 649818)
-[PASS] testDirectSendRejectedDepositSlippageAndZeroDeposit() (gas: 169545)
-[PASS] testForcedETHNeverBacksSharesOrRewards() (gas: 413706)
-[PASS] testGasGriefCannotPreventWETHFallback() (gas: 487978)
-[PASS] testLargeRevertDataCannotPreventWETHFallback() (gas: 493899)
-[PASS] testNativeCallbackCannotReenterWithdrawal() (gas: 582044)
-[PASS] testNativePartialAndFullExit() (gas: 647378)
-[PASS] testNativePrincipalAndBloomRewardsRemainSeparate() (gas: 1072904)
-[PASS] testRejectingBeneficiaryReceivesCanonicalWETHWithNoExtraFee() (gas: 487664)
-[PASS] testWrappingFailureAlsoRollsBack() (gas: 562861)
-Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 31.16ms (20.76ms CPU time)
-
-Ran 9 tests for test/IMD.t.sol:IMDIntegrationTest
-[PASS] testAtomicIMDDepositMeasuresNonOneToOneAndClearsApproval() (gas: 502301)
-[PASS] testFarmRewardsIndependentOfOfficialVaultYield() (gas: 1070651)
-[PASS] testIMDConversionSlippageAndShareSlippageRollbackAllTransfers() (gas: 542468)
-[PASS] testIMDRedemptionExplicitlyDisabledEvenAfterHoldExpires() (gas: 306513)
-[PASS] testOfficialDecimalsApprovalsAndDirectDeposit() (gas: 380326)
-[PASS] testOfficialHoldBlocksRedemptionButImmediateInKindExitWorks() (gas: 704259)
-[PASS] testOfficialThirdPartyMintCanRestampHoldButCannotBlockSIMDExit() (gas: 667377)
-[PASS] testProtocolDepositFailureRollsBackAndNoDexFallback() (gas: 179919)
-[PASS] testValueYieldDoesNotMintFarmAssetsOrShares() (gas: 403544)
-Suite result: ok. 9 passed; 0 failed; 0 skipped; finished in 25.91ms (9.44ms CPU time)
-
-Ran 11 tests for test/Accounting.t.sol:AccountingTest
-[PASS] testDecimals24ZeroShareAndDecimals6FractionalShares() (gas: 2996232)
-[PASS] testDonationIsolationAndZeroSupplyReset() (gas: 885686)
-[PASS] testFuzzWithdrawConservation(uint128,uint128,uint64) (runs: 256, μ: 920413, ~: 933510)
-Logs:
-  Bound result 905
-  Bound result 7115
-  Bound result 336
-
-[PASS] testMeasuredNetDepositAndUnsupportedOutboundTaxRevert() (gas: 687597)
-[PASS] testPartialAndFinalExitConserveEveryUnit() (gas: 1020217)
-[PASS] testRewardFundingNeverBacksBloomShares() (gas: 666539)
-[PASS] testSameBlockFullExitNoCooldown() (gas: 383056)
-[PASS] testSharesHaveNoTransferOrApprovalInterface() (gas: 222055)
-[PASS] testSlippageAndZeroInputsRevertAtomically() (gas: 485514)
-[PASS] testTokenFailureAndCallbackCannotStealShares() (gas: 673434)
-[PASS] testVirtualOffsetHeadroomPreservesExitAtUintLimit() (gas: 2176092)
-Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 623.82ms (617.93ms CPU time)
-
-Ran 12 tests for test/Administration.t.sol:AdministrationTest
+Ran 13 tests for test/Administration.t.sol:AdministrationTest
 [PASS] testBindingsAreOneTimeAndDependenciesCannotFrontRun() (gas: 983586)
-[PASS] testCancelledFutureBudgetIsFreeButAccruedClaimIsProtected() (gas: 1284391)
-[PASS] testCreate2FactoryDeploysFarmWithOwnerAndInitiallyDisabled() (gas: 4632776)
-[PASS] testExplicitOwnerNeverWorkerOrFactory() (gas: 81591)
-[PASS] testFutureFarmRequiresWhitelistCorrectOwnerAndNoDuplicates() (gas: 2148488)
-[PASS] testOnlyOwnerCanBindActivatePauseAllocateAndRecover() (gas: 219663)
-[PASS] testTreasuryFailedTransferRollsBackSpending() (gas: 515482)
-[PASS] testTreasuryOnlySpendsReceivedFeesNotDonationsOrFarmFunds() (gas: 752192)
-[PASS] testTwoStepOwnershipAndSelectivePermanentRenunciation() (gas: 729767)
-[PASS] testUnboundAndUnregisteredContractsRejectActivation() (gas: 478048)
-[PASS] testWhitelistRemovalOnlyStopsDeposits() (gas: 457008)
-[PASS] testWrongChainAndDecimalsCannotActivate() (gas: 1179593)
-Suite result: ok. 12 passed; 0 failed; 0 skipped; finished in 18.54ms (15.66ms CPU time)
+[PASS] testCancelledFutureBudgetIsFreeButAccruedClaimIsProtected() (gas: 1274713)
+[PASS] testCreate2FactoryDeploysFarmWithOwnerAndInitiallyDisabled() (gas: 4684821)
+[PASS] testExplicitOwnerNeverWorkerOrFactory() (gas: 81613)
+[PASS] testFarmThatCouldNeverActivateCannotTakeTheAssetSlot() (gas: 4703577)
+[PASS] testFutureFarmRequiresWhitelistCorrectOwnerAndNoDuplicates() (gas: 2155894)
+[PASS] testOnlyOwnerCanBindActivatePauseAllocateAndRecover() (gas: 219575)
+[PASS] testStrandingRecipientsAreRejected() (gas: 1263657)
+[PASS] testTreasuryFailedTransferRollsBackSpending() (gas: 510642)
+[PASS] testTreasuryOnlySpendsReceivedFeesNotDonationsOrFarmFunds() (gas: 747352)
+[PASS] testTwoStepOwnershipAndSelectivePermanentRenunciation() (gas: 725171)
+[PASS] testUnboundAndUnregisteredContractsRejectActivation() (gas: 482714)
+[PASS] testWhitelistGovernsAdmissionOnlyAndRenouncedPauseIsFinal() (gas: 2130499)
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 12.04ms (17.02ms CPU time)
 
-Ran 5 tests for test/Deployment.t.sol:DeploymentTest
-[PASS] testAllApplicationConstructorsSucceedWithDependenciesAbsent() (gas: 240789)
-[PASS] testCoreScriptAssignsEveryPrivilegeToConfirmedRequesterAndDoesNotInitialize() (gas: 10258771)
-[PASS] testFarmScriptsTakeRealInputsAndNeverEnableDepositsOrEmissions() (gas: 58176347)
-[PASS] testScriptRejectsMissingBloomAndWrongChain() (gas: 8419148)
-[PASS] testScriptRejectsWrongRequesterAndUnboundToken() (gas: 8914250)
-Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 581.96ms (580.38ms CPU time)
+Ran 10 tests for test/IMD.t.sol:IMDIntegrationTest
+[PASS] testAtomicIMDDepositMeasuresNonOneToOneAndClearsApproval() (gas: 497225)
+[PASS] testFarmRewardsIndependentOfOfficialVaultYield() (gas: 1060381)
+[PASS] testIMDConversionSlippageAndShareSlippageRollbackAllTransfers() (gas: 532218)
+[PASS] testIMDRedemptionExplicitlyDisabledEvenAfterHoldExpires() (gas: 301474)
+[PASS] testOfficialDecimalsApprovalsAndDirectDeposit() (gas: 375218)
+[PASS] testOfficialHoldBlocksRedemptionButImmediateInKindExitWorks() (gas: 699509)
+[PASS] testOfficialThirdPartyMintCanRestampHoldButCannotBlockSIMDExit() (gas: 662805)
+[PASS] testProtocolDepositFailureRollsBackAndNoDexFallback() (gas: 174706)
+[PASS] testTokenAndVaultContractsAreRejectedAsBeneficiaries() (gas: 379496)
+[PASS] testValueYieldDoesNotMintFarmAssetsOrShares() (gas: 398357)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 29.75ms (12.48ms CPU time)
+
+Ran 13 tests for test/Accounting.t.sol:AccountingTest
+[PASS] testDecimals24ZeroShareAndDecimals6FractionalShares() (gas: 2995224)
+[PASS] testDonationIsolationAndZeroSupplyReset() (gas: 875875)
+[PASS] testFuzzWithdrawConservation(uint128,uint128,uint64) (runs: 256, μ: 910753, ~: 924103)
+Logs:
+  Bound result 3000000000000000000
+  Bound result 800000000000000000000
+  Bound result 2668722545
+
+[PASS] testPartialAndFinalExitConserveEveryUnit() (gas: 1010537)
+[PASS] testRetainedFeeInflationSetupIsUnprofitableAndLossBoundedByOneQuantum() (gas: 1523023)
+[PASS] testRewardFundingNeverBacksBloomShares() (gas: 661312)
+[PASS] testSameBlockFullExitNoCooldown() (gas: 378030)
+[PASS] testSharesHaveNoTransferOrApprovalInterface() (gas: 216773)
+[PASS] testSlippageAndZeroInputsRevertAtomically() (gas: 465334)
+[PASS] testTaxedTransfersAreRejectedBeforeTakingPrincipalAndAtExit() (gas: 868586)
+[PASS] testTokenFailureAndCallbackCannotStealShares() (gas: 663104)
+[PASS] testVirtualOffsetHeadroomPreservesExitAtUintLimit() (gas: 2177904)
+[PASS] testVirtualOffsetsKeepInitialRateAndAtLeastOneMillionQuanta() (gas: 1833636)
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 308.66ms (318.39ms CPU time)
+
+Ran 11 tests for test/ETH.t.sol:ETHTest
+[PASS] testBothDeliveryPathsFailAtomically() (gas: 645070)
+[PASS] testDirectSendRejectedDepositSlippageAndZeroDeposit() (gas: 159250)
+[PASS] testForcedETHNeverBacksSharesOrRewards() (gas: 409749)
+[PASS] testGasGriefCannotPreventWETHFallback() (gas: 483274)
+[PASS] testLargeRevertDataCannotPreventWETHFallback() (gas: 489195)
+[PASS] testNativeCallbackCannotReenterWithdrawal() (gas: 577317)
+[PASS] testNativePartialAndFullExit() (gas: 637860)
+[PASS] testNativePrincipalAndBloomRewardsRemainSeparate() (gas: 1062924)
+[PASS] testRejectingBeneficiaryReceivesCanonicalWETHWithNoExtraFee() (gas: 482960)
+[PASS] testWETHAndTreasuryBeneficiariesAreRejectedBeforeAnyPayout() (gas: 281561)
+[PASS] testWrappingFailureAlsoRollsBack() (gas: 558135)
+Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 312.60ms (8.57ms CPU time)
 
 Ran 14 tests for test/Rewards.t.sol:RewardsTest
-[PASS] testCannotPledgeEarnedRewardsTwiceOrRecoverObligations() (gas: 1020036)
-[PASS] testContinueBoostAndRestartPreserveEarnedAndEpochIdentity() (gas: 1245313)
-[PASS] testEpochBoundaryAndInvalidConfiguration() (gas: 995374)
-[PASS] testFrequentClaimSettlementsPreserveSubWeiFractions() (gas: 1651872)
-[PASS] testFullExitRetainsClaimAndClaimHasNoFee() (gas: 1257201)
-[PASS] testFundingAndConfigurationNeverStartAccrual() (gas: 797436)
-[PASS] testFuzzRewardsSolventAcrossTimeAndShareEdits(uint96,uint96,uint96,uint32) (runs: 256, μ: 1661968, ~: 1701580)
+[PASS] testCannotPledgeEarnedRewardsTwiceOrRecoverObligations() (gas: 1004298)
+[PASS] testContinueBoostAndRestartPreserveEarnedAndEpochIdentity() (gas: 1229154)
+[PASS] testEpochBoundaryAndInvalidConfiguration() (gas: 978553)
+[PASS] testFrequentClaimSettlementsPreserveSubWeiFractions() (gas: 1636807)
+[PASS] testFullExitRetainsClaimAndClaimHasNoFee() (gas: 1246779)
+[PASS] testFundingAndConfigurationNeverStartAccrual() (gas: 786567)
+[PASS] testFuzzRewardsSolventAcrossTimeAndShareEdits(uint96,uint96,uint96,uint32) (runs: 256, μ: 1655931, ~: 1686538)
 Logs:
-  Bound result 927
-  Bound result 10875
-  Bound result 583
-  Bound result 1657
+  Bound result 32920472225624112
+  Bound result 11892089935238
+  Bound result 422016505797269
+  Bound result 642706
 
-[PASS] testLateDepositorReceivesNoPastRewards() (gas: 1312300)
-[PASS] testOversizedEpochCannotBrickOneShareAccrual() (gas: 1212257)
-[PASS] testPausedDepositsDoNotBlockClaimsWithdrawalOrAccrual() (gas: 1134058)
-[PASS] testRewardTransferFailureRollsBackClaimAndCanRetry() (gas: 1111460)
-[PASS] testRoundingFractionsSurviveSettlementsAndDustReleasesOnlyAtZeroSupply() (gas: 1764777)
-[PASS] testTopUpsStayFreeAndOnlyFreeFundsRecoverable() (gas: 1013604)
-[PASS] testZeroStakerIntervalsReturnToReserveAndNeverRetroactive() (gas: 1467500)
-Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 790.45ms (788.32ms CPU time)
+[PASS] testLateDepositorReceivesNoPastRewards() (gas: 1296670)
+[PASS] testOversizedEpochCannotBrickOneShareAccrual() (gas: 1201879)
+[PASS] testPausedDepositsDoNotBlockClaimsWithdrawalOrAccrual() (gas: 1123568)
+[PASS] testRewardTransferFailureRollsBackClaimAndCanRetry() (gas: 1101188)
+[PASS] testRoundingFractionsSurviveSettlementsAndDustReleasesOnlyAtZeroSupply() (gas: 1750145)
+[PASS] testTopUpsStayFreeAndOnlyFreeFundsRecoverable() (gas: 1002992)
+[PASS] testZeroStakerIntervalsReturnToReserveAndNeverRetroactive() (gas: 1451825)
+Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 312.73ms (324.43ms CPU time)
+
+Ran 5 tests for test/Deployment.t.sol:DeploymentTest
+[PASS] testAllApplicationConstructorsSucceedWithDependenciesAbsent() (gas: 240456)
+[PASS] testCoreScriptAssignsEveryPrivilegeToConfirmedRequesterAndDoesNotInitialize() (gas: 10354342)
+[PASS] testFarmScriptsTakeRealInputsAndNeverEnableDepositsOrEmissions() (gas: 58818632)
+[PASS] testScriptRejectsMissingBloomAndWrongChain() (gas: 8510378)
+[PASS] testScriptRejectsWrongRequesterAndUnboundToken() (gas: 8989950)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 327.77ms (427.07ms CPU time)
 
 Ran 1 test for test/Invariants.t.sol:FarmInvariantTest
 [PASS]
@@ -122,54 +127,54 @@ FarmInvariantTest invariants:
 ╰-------------+-----------+-------+---------+----------╯
 
 Logs:
-  Bound result 684
-  Bound result 1904
-  Bound result 2731061622
-  Bound result 1352
-  Bound result 6958
-  Bound result 3340342381
-  Bound result 474
-  Bound result 202
+  Bound result 683
+  Bound result 1905
+  Bound result 1871
+  Bound result 4344
+  Bound result 6959
+  Bound result 459
+  Bound result 148
   Bound result 2166413321
-  Bound result 2197
-  Bound result 8
-  Bound result 4343
+  Bound result 2115
+  Bound result 525
+  Bound result 1806
+  Bound result 10
   Bound result 4900178740
-  Bound result 5531
-  Bound result 4
-  Bound result 8790
-  Bound result 2817
-  Bound result 7447
-  Bound result 8025
-  Bound result 8607
-  Bound result 5710
-  Bound result 1610
-  Bound result 10926
-  Bound result 9698
-  Bound result 8108
-  Bound result 19
-  Bound result 905456384
+  Bound result 5174
+  Bound result 17
+  Bound result 1313373041
+  Bound result 141516
+  Bound result 7438
+  Bound result 7757
+  Bound result 8694
+  Bound result 5647
+  Bound result 8861
+  Bound result 193
+  Bound result 9720
+  Bound result 7938
+  Bound result 25
+  Bound result 4138968485
   Bound result 6386506982564926813467
-  Bound result 9339
-  Bound result 2428830012
-  Bound result 2486
+  Bound result 9159
+  Bound result 7470
+  Bound result 2527
   Bound result 15
-  Bound result 425
+  Bound result 5508
 
-Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU time)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 5.10s (5.09s CPU time)
 
 ╭-------------------------------------------------------+-----------------+---------+--------+---------+---------╮
 | script/DeployBLOOMFarm.s.sol:DeployBLOOMFarm Contract |                 |         |        |         |         |
 +================================================================================================================+
 | Deployment Cost                                       | Deployment Size |         |        |         |         |
 |-------------------------------------------------------+-----------------+---------+--------+---------+---------|
-|                                               3838473 |           17631 |         |        |         |         |
+|                                               3882876 |           17840 |         |        |         |         |
 |-------------------------------------------------------+-----------------+---------+--------+---------+---------|
 |                                                       |                 |         |        |         |         |
 |-------------------------------------------------------+-----------------+---------+--------+---------+---------|
 | Function Name                                         | Min             | Avg     | Median | Max     | # Calls |
 |-------------------------------------------------------+-----------------+---------+--------+---------+---------|
-| run                                                   |           33818 | 1044170 |  40375 | 3058317 |       3 |
+| run                                                   |           33818 | 1057220 |  40375 | 3097468 |       3 |
 ╰-------------------------------------------------------+-----------------+---------+--------+---------+---------╯
 
 ╭---------------------------------------------+-----------------+---------+---------+---------+---------╮
@@ -177,13 +182,13 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +=======================================================================================================+
 | Deployment Cost                             | Deployment Size |         |         |         |         |
 |---------------------------------------------+-----------------+---------+---------+---------+---------|
-|                                     2152331 |            9739 |         |         |         |         |
+|                                     2168549 |            9814 |         |         |         |         |
 |---------------------------------------------+-----------------+---------+---------+---------+---------|
 |                                             |                 |         |         |         |         |
 |---------------------------------------------+-----------------+---------+---------+---------+---------|
 | Function Name                               | Min             | Avg     | Median  | Max     | # Calls |
 |---------------------------------------------+-----------------+---------+---------+---------+---------|
-| run                                         |           21328 | 1523460 | 1898994 | 1898994 |       5 |
+| run                                         |           21328 | 1535479 | 1914017 | 1914017 |       5 |
 ╰---------------------------------------------+-----------------+---------+---------+---------+---------╯
 
 ╭---------------------------------------------------+-----------------+---------+---------+---------+---------╮
@@ -191,13 +196,13 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +=============================================================================================================+
 | Deployment Cost                                   | Deployment Size |         |         |         |         |
 |---------------------------------------------------+-----------------+---------+---------+---------+---------|
-|                                           4051338 |           18608 |         |         |         |         |
+|                                           4111490 |           18892 |         |         |         |         |
 |---------------------------------------------------+-----------------+---------+---------+---------+---------|
 |                                                   |                 |         |         |         |         |
 |---------------------------------------------------+-----------------+---------+---------+---------+---------|
 | Function Name                                     | Min             | Avg     | Median  | Max     | # Calls |
 |---------------------------------------------------+-----------------+---------+---------+---------+---------|
-| run                                               |         3324314 | 3324314 | 3324314 | 3324314 |       1 |
+| run                                               |         3378504 | 3378504 | 3378504 | 3378504 |       1 |
 ╰---------------------------------------------------+-----------------+---------+---------+---------+---------╯
 
 ╭-----------------------------------------------------+-----------------+---------+---------+---------+---------╮
@@ -205,13 +210,13 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +===============================================================================================================+
 | Deployment Cost                                     | Deployment Size |         |         |         |         |
 |-----------------------------------------------------+-----------------+---------+---------+---------+---------|
-|                                             4239799 |           19504 |         |         |         |         |
+|                                             4299676 |           19784 |         |         |         |         |
 |-----------------------------------------------------+-----------------+---------+---------+---------+---------|
 |                                                     |                 |         |         |         |         |
 |-----------------------------------------------------+-----------------+---------+---------+---------+---------|
 | Function Name                                       | Min             | Avg     | Median  | Max     | # Calls |
 |-----------------------------------------------------+-----------------+---------+---------+---------+---------|
-| run                                                 |           28009 | 1749338 | 1749338 | 3470667 |       2 |
+| run                                                 |           28009 | 1775831 | 1775831 | 3523653 |       2 |
 ╰-----------------------------------------------------+-----------------+---------+---------+---------+---------╯
 
 ╭--------------------------------------------+-----------------+---------+---------+---------+---------╮
@@ -219,35 +224,33 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +======================================================================================================+
 | Deployment Cost                            | Deployment Size |         |         |         |         |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-|                                          0 |            4490 |         |         |         |         |
+|                                          0 |            4565 |         |         |         |         |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
 |                                            |                 |         |         |         |         |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
 | Function Name                              | Min             | Avg     | Median  | Max     | # Calls |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| bindBloom                                  |           24042 |   52265 |   53150 |   53150 |      61 |
+| bindBloom                                  |           24042 |   52332 |   53150 |   53150 |      66 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| bloom                                      |            2447 |    2447 |    2447 |    2447 |      87 |
+| bloom                                      |            2447 |    2447 |    2447 |    2447 |      95 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| deployFarm                                 |          269623 | 1810787 | 1810787 | 3351951 |       2 |
+| deployFarm                                 |          272369 | 2333059 | 3326066 | 3400742 |       3 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| farmCount                                  |            2293 |    2293 |    2293 |    2293 |       2 |
+| farmCount                                  |            2293 |    2293 |    2293 |    2293 |       3 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| farmForAsset                               |            2638 |    2638 |    2638 |    2638 |      82 |
+| farmForAsset                               |            2638 |    2638 |    2638 |    2638 |      92 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| isAssetWhitelisted                         |            2588 |    2588 |    2588 |    2588 |    2108 |
+| isFarm                                     |            2590 |    2590 |    2590 |    2590 |    1584 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| isFarm                                     |            2590 |    2590 |    2590 |    2590 |    1597 |
-|--------------------------------------------+-----------------+---------+---------+---------+---------|
-| owner                                      |            2374 |    2374 |    2374 |    2374 |      66 |
+| owner                                      |            2374 |    2374 |    2374 |    2374 |      71 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
 | pendingOwner                               |            2374 |    2374 |    2374 |    2374 |       1 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| registerFarm                               |           33949 |  124612 |  133856 |  133856 |      86 |
+| registerFarm                               |           33993 |  128257 |  138542 |  138542 |      96 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| treasury                                   |             261 |     261 |     261 |     261 |     145 |
+| treasury                                   |             261 |     261 |     261 |     261 |     158 |
 |--------------------------------------------+-----------------+---------+---------+---------+---------|
-| whitelistAsset                             |           24227 |   44210 |   52680 |   52680 |     143 |
+| whitelistAsset                             |           24227 |   44205 |   52680 |   52680 |     155 |
 ╰--------------------------------------------+-----------------+---------+---------+---------+---------╯
 
 ╭----------------------------------------------+-----------------+-------+--------+-------+---------╮
@@ -263,7 +266,7 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
 | availableFees                                |            4847 |  4847 |   4847 |  4847 |      17 |
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
-| bindRegistry                                 |           23977 | 54859 |  55851 | 55851 |      60 |
+| bindRegistry                                 |           23977 | 54935 |  55851 | 55851 |      65 |
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
 | owner                                        |            2418 |  2418 |   2418 |  2418 |       7 |
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
@@ -273,7 +276,7 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
 | receivedFees                                 |            2545 |  2545 |   2545 |  2545 |       1 |
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
-| registry                                     |            2403 |  2403 |   2403 |  2403 |      83 |
+| registry                                     |            2403 |  2403 |   2403 |  2403 |      91 |
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
 | spendFees                                    |           36247 | 62544 |  68157 | 83230 |       3 |
 |----------------------------------------------+-----------------+-------+--------+-------+---------|
@@ -285,119 +288,127 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +=================================================================================================+
 | Deployment Cost                          | Deployment Size |        |        |        |         |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-|                                        0 |           16113 |        |        |        |         |
+|                                        0 |           16322 |        |        |        |         |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 |                                          |                 |        |        |        |         |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | Function Name                            | Min             | Avg    | Median | Max    | # Calls |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
+| PAUSE                                    |             261 |    261 |    261 |    261 |       2 |
+|------------------------------------------+-----------------+--------+--------+--------+---------|
 | REWARDS                                  |             283 |    283 |    283 |    283 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| REWARD_PRECISION                         |             290 |    290 |    290 |    290 |       1 |
+| REWARD_PRECISION                         |             312 |    312 |    312 |    312 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | acceptOwnership                          |           23554 |  28354 |  28354 |  33155 |       2 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| accountedAssets                          |            2405 |   2405 |   2405 |   2405 |     528 |
+| accountedAssets                          |            2383 |   2383 |   2383 |   2383 |     531 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| activate                                 |           23525 |  57885 |  59372 |  59372 |      62 |
+| activate                                 |           23525 |  58018 |  59396 |  59396 |      67 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| active                                   |            2390 |   2390 |   2390 |   2390 |      60 |
+| active                                   |            2390 |   2390 |   2390 |   2390 |      65 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| asset                                    |             350 |    350 |    350 |    350 |    2423 |
+| asset                                    |             283 |    283 |    283 |    283 |    2412 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| cancelFutureRewards                      |           50188 |  59007 |  52988 | 153636 |     804 |
+| cancelFutureRewards                      |           50188 |  58705 |  52988 | 153636 |     804 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| checkpoint                               |           28890 |  32403 |  28890 | 117906 |    1683 |
+| checkpoint                               |           28890 |  32265 |  28890 | 117906 |    1683 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| claimRewards                             |           95071 | 111660 | 112171 | 266378 |     492 |
+| claimRewards                             |           27175 | 110264 | 112428 | 260373 |     503 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| configureEpoch                           |           23948 | 141413 | 144255 | 144435 |     279 |
+| configureEpoch                           |           23948 | 141435 | 144255 | 144435 |     281 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| continueEpoch                            |           35753 |  80677 |  78669 | 146269 |      91 |
+| continueEpoch                            |           35753 |  80701 |  78669 | 146269 |      90 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | cumulativeRetainedFees                   |            2428 |   2428 |   2428 |   2428 |       2 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| deposit                                  |           29366 | 153819 | 170489 | 256434 |    1496 |
+| deposit                                  |           29349 | 149132 | 165251 | 251196 |    1503 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| depositsPaused                           |             399 |   2322 |   2399 |   2399 |    1516 |
+| depositsPaused                           |             399 |   2316 |   2399 |   2399 |    1523 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| earnedUnpaidRewards                      |            2407 |   2407 |   2407 |   2407 |     532 |
+| earnedUnpaidRewards                      |            2429 |   2429 |   2429 |   2429 |     532 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | epochConfigured                          |            2420 |   2420 |   2420 |   2420 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | epochId                                  |            2450 |   2450 |   2450 |   2450 |       4 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| epochRunning                             |            2454 |   2454 |   2454 |   2454 |     371 |
+| epochRunning                             |            2454 |   2454 |   2454 |   2454 |     372 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | epochStartedAt                           |            2362 |   2362 |   2362 |   2362 |       2 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | excessBalance                            |           14811 |  14857 |  14873 |  14873 |       4 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| fundRewards                              |           23743 |  95640 |  89550 | 176250 |    1116 |
+| fundRewards                              |           23743 |  95704 |  89550 | 176250 |    1118 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| fundedRewards                            |            2405 |   2405 |   2405 |   2405 |     270 |
+| fundedRewards                            |            2383 |   2383 |   2383 |   2383 |     270 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| owner                                    |            2484 |   2484 |   2484 |   2484 |      66 |
+| owner                                    |            2484 |   2484 |   2484 |   2484 |      71 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | paidRewards                              |            2427 |   2427 |   2427 |   2427 |     534 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| pendingOwner                             |            2485 |   2485 |   2485 |   2485 |       4 |
+| pendingOwner                             |            2463 |   2463 |   2463 |   2463 |       4 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| pendingRewards                           |           14380 |  16558 |  14380 |  25813 |    1381 |
+| pendingRewards                           |           14424 |  16623 |  14424 |  25857 |    1381 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| previewDeposit                           |            4981 |   4981 |   4981 |   4981 |     434 |
+| previewDeposit                           |            4959 |   4959 |   4959 |   4959 |     435 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| previewRedeem                            |            5831 |   5831 |   5831 |   5831 |     258 |
+| previewRedeem                            |            5853 |   5853 |   5853 |   5853 |     260 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| protectedBalance                         |            9269 |   9269 |   9269 |   9269 |     540 |
+| protectedBalance                         |            9291 |   9291 |   9291 |   9291 |     540 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| recoverExcess                            |           24453 |  47064 |  46205 |  70534 |       3 |
+| recoverExcess                            |           24431 |  48909 |  46462 |  70791 |       5 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| recoverUnallocatedRewards                |           35805 |  83570 |  78285 | 118553 |     714 |
+| recoverUnallocatedRewards                |           36106 |  83889 |  78586 | 118854 |     715 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | recoveredRewards                         |            2407 |   2407 |   2407 |   2407 |     271 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| registry                                 |             282 |    282 |    282 |    282 |      58 |
+| registry                                 |             282 |    282 |    282 |    282 |      63 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | releasedRewardDust                       |            2428 |   2428 |   2428 |   2428 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | renounceOwnership                        |           30413 |  30413 |  30413 |  30413 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| renouncePowers                           |           47267 |  47267 |  47267 |  47267 |       1 |
+| renouncePowers                           |           47356 |  47356 |  47356 |  47356 |       2 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | renouncedPowers                          |            2406 |   2406 |   2406 |   2406 |       3 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| restartEpoch                             |           89356 | 163487 | 168139 | 219475 |     310 |
+| restartEpoch                             |           83804 | 157840 | 162599 | 213995 |     312 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | rewardCredit                             |            2600 |   2600 |   2600 |   2600 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | rewardReserve                            |            6803 |   6803 |   6803 |   6803 |     276 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| rewardToken                              |             325 |    325 |    325 |    325 |     598 |
+| rewardToken                              |             303 |    303 |    303 |    303 |     603 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| scheduledRewards                         |            2426 |   2426 |   2426 |   2426 |    1095 |
+| scheduledRewards                         |            2404 |   2404 |   2404 |   2404 |    1095 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| setDepositsPaused                        |           23848 |  30823 |  32059 |  32193 |     911 |
+| setDepositsPaused                        |           23870 |  30847 |  32081 |  32215 |     917 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| sharesOf                                 |            2598 |   2598 |   2598 |   2598 |    2131 |
+| sharesOf                                 |            2576 |   2576 |   2576 |   2576 |    2133 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | skippedRewards                           |            2362 |   2362 |   2362 |   2362 |       2 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| startEpoch                               |           40720 | 130829 | 131494 | 131494 |     273 |
+| startEpoch                               |           35180 | 125294 | 125954 | 125954 |     275 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | totalCredits                             |            2406 |   2406 |   2406 |   2406 |     528 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| totalShares                              |            2362 |   2362 |   2362 |   2362 |     265 |
+| totalShares                              |            2384 |   2384 |   2384 |   2384 |     269 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
 | transfer                                 |           21695 |  21695 |  21695 |  21695 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| transferOwnership                        |           47587 |  47587 |  47587 |  47587 |       1 |
+| transferOwnership                        |           47676 |  47676 |  47676 |  47676 |       1 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| treasury                                 |             327 |    327 |    327 |    327 |      58 |
+| treasury                                 |             327 |    327 |    327 |    327 |      63 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| unallocatedRewards                       |            2363 |   2363 |   2363 |   2363 |    1943 |
+| unallocatedRewards                       |            2407 |   2407 |   2407 |   2407 |    1943 |
 |------------------------------------------+-----------------+--------+--------+--------+---------|
-| withdraw                                 |           27133 | 229102 | 225922 | 405442 |    1636 |
+| verifyDependencies                       |            4437 |   4437 |   4437 |   4437 |      63 |
+|------------------------------------------+-----------------+--------+--------+--------+---------|
+| virtualAssets                            |             263 |    263 |    263 |    263 |       3 |
+|------------------------------------------+-----------------+--------+--------+--------+---------|
+| virtualShares                            |             284 |    284 |    284 |    284 |       3 |
+|------------------------------------------+-----------------+--------+--------+--------+---------|
+| withdraw                                 |           27500 | 229361 | 235150 | 405742 |    1627 |
 ╰------------------------------------------+-----------------+--------+--------+--------+---------╯
 
 ╭--------------------------------------+-----------------+--------+--------+--------+---------╮
@@ -405,75 +416,77 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +=============================================================================================+
 | Deployment Cost                      | Deployment Size |        |        |        |         |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-|                                    0 |           17308 |        |        |        |         |
+|                                    0 |           17592 |        |        |        |         |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
 |                                      |                 |        |        |        |         |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
 | Function Name                        | Min             | Avg    | Median | Max    | # Calls |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| accountedAssets                      |            2405 |   2405 |   2405 |   2405 |       6 |
+| accountedAssets                      |            2383 |   2383 |   2383 |   2383 |       6 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| activate                             |           64135 |  64135 |  64135 |  64135 |      10 |
+| activate                             |           64137 |  64137 |  64137 |  64137 |      11 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| active                               |            2390 |   2390 |   2390 |   2390 |      12 |
+| active                               |            2390 |   2390 |   2390 |   2390 |      13 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| asset                                |             350 |    350 |    350 |    350 |      32 |
+| asset                                |             372 |    372 |    372 |    372 |      34 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| claimRewards                         |          112091 | 112091 | 112091 | 112091 |       1 |
+| claimRewards                         |          112421 | 112421 | 112421 | 112421 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
 | configureEpoch                       |          144223 | 144223 | 144223 | 144223 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| deposit                              |           51946 | 116637 | 132503 | 132719 |      12 |
+| deposit                              |           29867 | 106776 | 127337 | 127553 |      14 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| depositsPaused                       |             399 |    732 |    399 |   2399 |      12 |
+| depositsPaused                       |             399 |    706 |    399 |   2399 |      13 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| earnedUnpaidRewards                  |            2407 |   2407 |   2407 |   2407 |       2 |
+| earnedUnpaidRewards                  |            2429 |   2429 |   2429 |   2429 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| epochRunning                         |            2387 |   2387 |   2387 |   2387 |       2 |
+| epochRunning                         |            2365 |   2365 |   2365 |   2365 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| excessBalance                        |            2853 |   2853 |   2853 |   2853 |       1 |
+| excessBalance                        |            2942 |   2942 |   2942 |   2942 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
 | fundRewards                          |          134862 | 134862 | 134862 | 134862 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| fundedRewards                        |            2405 |   2405 |   2405 |   2405 |       2 |
+| fundedRewards                        |            2383 |   2383 |   2383 |   2383 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| owner                                |            2484 |   2484 |   2484 |   2484 |      12 |
+| owner                                |            2484 |   2484 |   2484 |   2484 |      13 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
 | paidRewards                          |            2427 |   2427 |   2427 |   2427 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| pendingOwner                         |            2485 |   2485 |   2485 |   2485 |       2 |
+| pendingOwner                         |            2463 |   2463 |   2463 |   2463 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| pendingRewards                       |           14380 |  14380 |  14380 |  14380 |       1 |
+| pendingRewards                       |           14402 |  14402 |  14402 |  14402 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| previewDeposit                       |            4981 |   4981 |   4981 |   4981 |       1 |
+| previewDeposit                       |            4959 |   4959 |   4959 |   4959 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| protectedBalance                     |            7142 |   7142 |   7142 |   7142 |       2 |
+| protectedBalance                     |            7164 |   7164 |   7164 |   7164 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| recoverExcess                        |           34079 |  44729 |  44729 |  55380 |       2 |
+| recoverExcess                        |           34409 |  45059 |  45059 |  55710 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
 | recoveredRewards                     |            2407 |   2407 |   2407 |   2407 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| registry                             |             282 |    282 |    282 |    282 |      10 |
+| registry                             |             282 |    282 |    282 |    282 |      11 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| renouncedPowers                      |            2428 |   2428 |   2428 |   2428 |       2 |
+| renouncedPowers                      |            2406 |   2406 |   2406 |   2406 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| rewardReserve                        |            6825 |   6825 |   6825 |   6825 |       4 |
+| rewardReserve                        |            6803 |   6803 |   6803 |   6803 |       4 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| rewardToken                          |             325 |    325 |    325 |    325 |      14 |
+| rewardToken                          |             303 |    303 |    303 |    303 |      15 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| setDepositsPaused                    |           32193 |  32193 |  32193 |  32193 |      10 |
+| setDepositsPaused                    |           32193 |  32193 |  32193 |  32193 |      11 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| sharesOf                             |            2598 |   2598 |   2598 |   2598 |       3 |
+| sharesOf                             |            2576 |   2576 |   2576 |   2576 |       4 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| startEpoch                           |          131414 | 131414 | 131414 | 131414 |       1 |
+| startEpoch                           |          125852 | 125852 | 125852 | 125852 |       1 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| totalCredits                         |            2428 |   2428 |   2428 |   2428 |       2 |
+| totalCredits                         |            2406 |   2406 |   2406 |   2406 |       2 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| totalShares                          |            2451 |   2451 |   2451 |   2451 |       4 |
+| totalShares                          |            2362 |   2362 |   2362 |   2362 |       4 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| treasury                             |             327 |    327 |    327 |    327 |      10 |
+| treasury                             |             327 |    327 |    327 |    327 |      11 |
 |--------------------------------------+-----------------+--------+--------+--------+---------|
-| withdraw                             |          125859 | 210057 | 186892 | 300769 |       9 |
+| verifyDependencies                   |            9200 |   9200 |   9200 |   9200 |      11 |
+|--------------------------------------+-----------------+--------+--------+--------+---------|
+| withdraw                             |           27614 | 177281 | 177850 | 301231 |      11 |
 ╰--------------------------------------+-----------------+--------+--------+--------+---------╯
 
 ╭----------------------------------------+-----------------+--------+--------+--------+---------╮
@@ -481,7 +494,7 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +===============================================================================================+
 | Deployment Cost                        | Deployment Size |        |        |        |         |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-|                                      0 |           18204 |        |        |        |         |
+|                                      0 |           18484 |        |        |        |         |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 |                                        |                 |        |        |        |         |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
@@ -489,65 +502,67 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | accountedAssets                        |            2383 |   2383 |   2383 |   2383 |       7 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| activate                               |           66635 |  66635 |  66635 |  66635 |       9 |
+| activate                               |           66637 |  66637 |  66637 |  66637 |      10 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| active                                 |            2390 |   2390 |   2390 |   2390 |      11 |
+| active                                 |            2390 |   2390 |   2390 |   2390 |      12 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| asset                                  |             350 |    350 |    350 |    350 |      23 |
+| asset                                  |             372 |    372 |    372 |    372 |      25 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| claimRewards                           |          252034 | 252034 | 252034 | 252034 |       1 |
+| claimRewards                           |          252386 | 252386 | 252386 | 252386 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | configureEpoch                         |          149837 | 149837 | 149837 | 149837 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| deposit                                |          195976 | 195976 | 195976 | 195976 |       1 |
+| deposit                                |          190811 | 190811 | 190811 | 190811 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| depositIMD                             |          128384 | 271001 | 313443 | 313443 |       9 |
+| depositIMD                             |           30238 | 248256 | 308256 | 308256 |      11 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| depositsPaused                         |             466 |    829 |    466 |   2466 |      11 |
+| depositsPaused                         |             377 |    710 |    377 |   2377 |      12 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| earnedUnpaidRewards                    |            2385 |   2385 |   2385 |   2385 |       1 |
+| earnedUnpaidRewards                    |            2407 |   2407 |   2407 |   2407 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | epochRunning                           |            2432 |   2432 |   2432 |   2432 |       2 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| excessBalance                          |            8489 |   8489 |   8489 |   8489 |       2 |
+| excessBalance                          |            8578 |   8578 |   8578 |   8578 |       2 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | fundRewards                            |          140476 | 140476 | 140476 | 140476 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | fundedRewards                          |            2405 |   2405 |   2405 |   2405 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| imdRedemptionEnabled                   |             300 |    300 |    300 |    300 |       1 |
+| imdRedemptionEnabled                   |             322 |    322 |    322 |    322 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| owner                                  |            2462 |   2462 |   2462 |   2462 |      11 |
+| owner                                  |            2484 |   2484 |   2484 |   2484 |      12 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| paidRewards                            |            2405 |   2405 |   2405 |   2405 |       2 |
+| paidRewards                            |            2427 |   2427 |   2427 |   2427 |       2 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | pendingOwner                           |            2485 |   2485 |   2485 |   2485 |       2 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| protectedBalance                       |            2674 |   4908 |   4908 |   7142 |       2 |
+| protectedBalance                       |            2696 |   4930 |   4930 |   7164 |       2 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | recoveredRewards                       |            2385 |   2385 |   2385 |   2385 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| registry                               |             371 |    371 |    371 |    371 |       9 |
+| registry                               |             282 |    282 |    282 |    282 |      10 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | renouncedPowers                        |            2384 |   2384 |   2384 |   2384 |       2 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | rewardReserve                          |            6781 |   6781 |   6781 |   6781 |       3 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| rewardToken                            |             325 |    325 |    325 |    325 |      11 |
+| rewardToken                            |             325 |    325 |    325 |    325 |      12 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| setDepositsPaused                      |           32193 |  32193 |  32193 |  32193 |       9 |
+| setDepositsPaused                      |           32193 |  32193 |  32193 |  32193 |      10 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| sharesOf                               |            2598 |   2598 |   2598 |   2598 |       4 |
+| sharesOf                               |            2598 |   2598 |   2598 |   2598 |       5 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| startEpoch                             |          137003 | 137003 | 137003 | 137003 |       1 |
+| startEpoch                             |          131463 | 131463 | 131463 | 131463 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | totalCredits                           |            2362 |   2362 |   2362 |   2362 |       1 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| totalShares                            |            2451 |   2451 |   2451 |   2451 |       3 |
+| totalShares                            |            2362 |   2362 |   2362 |   2362 |       3 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| treasury                               |             283 |    283 |    283 |    283 |       9 |
+| treasury                               |             305 |    305 |    305 |    305 |      10 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
-| withdraw                               |          289938 | 289938 | 289938 | 289938 |       2 |
+| verifyDependencies                     |           11722 |  11722 |  11722 |  11722 |      10 |
+|----------------------------------------+-----------------+--------+--------+--------+---------|
+| withdraw                               |           27632 | 158997 | 159023 | 290312 |       4 |
 |----------------------------------------+-----------------+--------+--------+--------+---------|
 | withdrawIMD                            |             518 |    518 |    518 |    518 |       1 |
 ╰----------------------------------------+-----------------+--------+--------+--------+---------╯
@@ -557,39 +572,47 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 +==================================================================================================+
 | Deployment Cost                           | Deployment Size |        |        |        |         |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-|                                         0 |           16030 |        |        |        |         |
+|                                         0 |           16239 |        |        |        |         |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
 |                                           |                 |        |        |        |         |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
 | Function Name                             | Min             | Avg    | Median | Max    | # Calls |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| accountedAssets                           |            2405 |   2405 |   2405 |   2405 |       2 |
+| accountedAssets                           |            2383 |   2383 |   2383 |   2383 |       2 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| activate                                  |           32810 |  55075 |  61850 |  61850 |       5 |
+| activate                                  |           50561 |  59611 |  61874 |  61874 |       5 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| active                                    |             390 |   2104 |   2390 |   2390 |       7 |
+| active                                    |             390 |   2026 |   2390 |   2390 |      11 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| asset                                     |             328 |    328 |    328 |    328 |      15 |
+| asset                                     |             372 |    372 |    372 |    372 |      19 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| deposit                                   |           85408 | 140584 | 151878 | 179165 |       6 |
+| deposit                                   |           80473 | 135987 | 146640 | 174518 |       6 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| depositsPaused                            |             377 |    662 |    377 |   2377 |       7 |
+| depositsPaused                            |             399 |    599 |    399 |   2399 |      10 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| epochRunning                              |            2432 |   2432 |   2432 |   2432 |       1 |
+| epochRunning                              |            2454 |   2454 |   2454 |   2454 |       1 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| owner                                     |             462 |   2212 |   2462 |   2462 |       8 |
+| owner                                     |             484 |   2120 |   2484 |   2484 |      11 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| registry                                  |             371 |    371 |    371 |    371 |       6 |
+| previewDeposit                            |            4959 |   4959 |   4959 |   4959 |       2 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| rewardToken                               |             325 |    325 |    325 |    325 |       6 |
+| registry                                  |             282 |    282 |    282 |    282 |       9 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| setDepositsPaused                         |           28074 |  31146 |  32171 |  32171 |       4 |
+| rewardToken                               |             303 |    303 |    303 |    303 |       9 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| totalShares                               |            2429 |   2429 |   2429 |   2429 |       1 |
+| setDepositsPaused                         |           28096 |  31168 |  32193 |  32193 |       4 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| treasury                                  |             305 |    305 |    305 |    305 |       6 |
+| totalShares                               |            2362 |   2362 |   2362 |   2362 |       1 |
 |-------------------------------------------+-----------------+--------+--------+--------+---------|
-| withdraw                                  |          179921 | 223274 | 223274 | 266628 |       2 |
+| treasury                                  |             327 |    327 |    327 |    327 |       9 |
+|-------------------------------------------+-----------------+--------+--------+--------+---------|
+| verifyDependencies                        |             338 |   6175 |   6937 |   6937 |       9 |
+|-------------------------------------------+-----------------+--------+--------+--------+---------|
+| virtualAssets                             |             263 |    263 |    263 |    263 |       3 |
+|-------------------------------------------+-----------------+--------+--------+--------+---------|
+| virtualShares                             |             284 |    284 |    284 |    284 |       2 |
+|-------------------------------------------+-----------------+--------+--------+--------+---------|
+| withdraw                                  |          180332 | 223685 | 223685 | 267039 |       2 |
 ╰-------------------------------------------+-----------------+--------+--------+--------+---------╯
 
 ╭------------------------------------+-----------------+--------+--------+--------+---------╮
@@ -605,7 +628,7 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 |------------------------------------+-----------------+--------+--------+--------+---------|
 | blocked                            |            2292 |   2292 |   2292 |   2292 |       1 |
 |------------------------------------+-----------------+--------+--------+--------+---------|
-| exit                               |          170060 | 170060 | 170060 | 170060 |       1 |
+| exit                               |          170588 | 170588 | 170588 | 170588 |       1 |
 ╰------------------------------------+-----------------+--------+--------+--------+---------╯
 
 ╭--------------------------------------------+-----------------+--------+--------+--------+---------╮
@@ -619,29 +642,29 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
 | Function Name                              | Min             | Avg    | Median | Max    | # Calls |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| cancel                                     |           57889 |  69087 |  63189 | 146737 |     803 |
+| cancel                                     |           60389 |  68788 |  63189 | 146737 |     803 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| claim                                      |           21883 |  33506 |  24402 | 307545 |     836 |
+| claim                                      |           21927 |  31934 |  24446 | 301584 |     836 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| deposit                                    |            7966 |  94618 | 138609 | 292954 |     816 |
+| deposit                                    |            7966 |  91004 | 133349 | 287694 |     816 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
 | deposited                                  |            2360 |   2360 |   2360 |   2360 |       1 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| donate                                     |           43977 |  56078 |  52401 |  87381 |     810 |
+| donate                                     |           43977 |  56067 |  52401 |  87381 |     810 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
 | donated                                    |            2383 |   2383 |   2383 |   2383 |       2 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| editEpoch                                  |           44905 | 137809 |  69086 | 297530 |     834 |
+| editEpoch                                  |           44927 | 136111 |  69108 | 292108 |     834 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| elapse                                     |            6610 |   6741 |   6610 |   7294 |     801 |
+| elapse                                     |            6610 |   6749 |   6610 |   7294 |     801 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| fund                                       |           94040 | 103198 |  94076 | 173577 |     841 |
+| fund                                       |           94040 | 103237 |  94076 | 173577 |     841 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| pause                                      |           39542 |  41026 |  42342 |  42476 |     849 |
+| pause                                      |           39564 |  41048 |  42364 |  42498 |     849 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| recover                                    |           37263 | 121856 | 129045 | 238824 |     845 |
+| recover                                    |           37307 | 121944 | 129378 | 239169 |     845 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
-| withdraw                                   |           10118 |  99572 |  10118 | 391040 |     822 |
+| withdraw                                   |           10096 |  95465 |  10096 | 463036 |     822 |
 |--------------------------------------------+-----------------+--------+--------+--------+---------|
 | withdrawn                                  |            2383 |   2383 |   2383 |   2383 |       1 |
 ╰--------------------------------------------+-----------------+--------+--------+--------+---------╯
@@ -659,22 +682,22 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 9.21s (9.21s CPU ti
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
 | allowance                                    |            2789 |   2789 |   2789 |   2789 |       1 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
-| approve                                      |           46330 |  46696 |  46702 |  46702 |     234 |
+| approve                                      |           46330 |  46696 |  46702 |  46702 |     254 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
-| balanceOf                                    |             582 |   1397 |    582 |   2582 |   31278 |
+| balanceOf                                    |             582 |   1397 |    582 |   2582 |   31207 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
 | callbackSucceeded                            |            2398 |   2398 |   2398 |   2398 |       1 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
-| decimals                                     |             227 |    227 |    227 |    227 |     203 |
+| decimals                                     |             227 |    227 |    227 |    227 |     383 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
-| mint                                         |           30829 |  41937 |  36453 |  70797 |    1045 |
+| mint                                         |           30829 |  42223 |  36453 |  70797 |    1066 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
 | setCallback                                  |          136398 | 136398 | 136398 | 136398 |       1 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
 | setFail                                      |           26561 |  35120 |  35123 |  43673 |       4 |
 |----------------------------------------------+-----------------+--------+--------+--------+---------|
-| setFee                                       |           26425 |  34981 |  34981 |  43537 |       2 |
+| setFee                                       |           26425 |  34981 |  34981 |  43537 |       4 |
 ╰----------------------------------------------+-----------------+--------+--------+--------+---------╯
 
 
-Ran 7 test suites in 9.41s (11.29s CPU time): 62 tests passed, 0 failed, 0 skipped (62 total tests)
+Ran 7 test suites in 5.23s (6.40s CPU time): 67 tests passed, 0 failed, 0 skipped (67 total tests)

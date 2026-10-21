@@ -1,11 +1,12 @@
 # Local validation record
 
-Solidity 0.8.26 / Foundry 1.8.5; executed 2026-10-21. No mainnet write transaction was executed.
+Solidity 0.8.26 / Foundry 1.8.3; executed 2026-10-21 (revision round). No mainnet write transaction was executed.
 
 | Check | Result |
 |---|---|
 | `forge build` | Pass |
-| `forge test --gas-report` with the assignment's seed | **62 reported tests passed**, 0 failed, 0 skipped, 7 suites |
+| `forge test --gas-report` with the assignment's seed | **67 reported tests passed**, 0 failed, 0 skipped, 7 suites |
+| Reviewer proofs `Proof_82730568c33e` and `Proof_0cdb46606750` (run from `test/scratch/`) | Both failed on the previous tree and pass now |
 | `forge fmt --check` | Pass |
 | Two fuzz tests | 256 runs each |
 | Stateful invariant campaign | 128 runs × 64 calls = **8,192 operations**, 0 reverts; two conservation/solvency invariants |
@@ -21,7 +22,10 @@ Seed: `0xa2dd4bc91022fec0027b6a9355476a6e97def148369ce70d30c412c8b4c5dfc7`, pinn
 ## Exercised behavior
 
 - Partial/full/same-block withdrawals, pool-wide retained-fee appreciation, self-benefit, exact rounding conservation, final 15% Treasury split and zero-supply reset.
-- Donation isolation, 6/18/24-decimal normalization, virtual assets/shares, zero-share rejection, min-share/min-net-asset slippage and atomic rollback. Uint256 boundary tests cover virtual-offset headroom and oversized reward schedules leaving only one share quantum.
+- Donation isolation, 6/18/24-decimal normalization, virtual assets/shares (at least 10^6 quanta, initial 1:1 rate), zero-share rejection, min-share/min-net-asset slippage and atomic rollback. The retained-fee inflation setup (exit all but one quantum, or a 1-wei holder left after a large exit) is shown unprofitable for the inflater and bounded to a one-quantum rounding loss for the next depositor. Uint256 boundary tests cover virtual-offset headroom and oversized reward schedules leaving only one share quantum.
+- Transfer-taxed deposits are refused before taking principal; stranding beneficiaries (Treasury, registry, tokens, WETH, IMD) are rejected for withdrawals, claims and recovery.
+- A farm whose decimals or chain could never activate is refused at `registerFarm` and `deployFarm` (the CREATE2 creation is rolled back) and leaves its asset slot free for the correct farm.
+- The whitelist admits assets at registration only; after `renouncePowers(PAUSE)` the owner cannot halt deposits through de-whitelisting, while epoch starts and exits keep working.
 - Separate same-token BLOOM reward funding, full-exit credits, claims without fees, no accrual from funding/configuration alone, late deposits and zero-staker intervals.
 - Continue/boost/Restart, unchanged past credits, unavailable earned budget, top-ups, cancellation, free-only recovery, segment completion, per-user fractional credits and dust release.
 - Mainnet IMD/sIMD runtimes: direct sIMD, atomic IMD conversion at a changed rate, actual net receipt, cleared approval, nonrebasing yield semantics, official hold propagation and dust-mint interference, explicit IMD redemption disablement, slippage/protocol failure rollback, independent BLOOM rewards.
@@ -34,12 +38,12 @@ Seed: `0xa2dd4bc91022fec0027b6a9355476a6e97def148369ce70d30c412c8b4c5dfc7`, pinn
 
 | Contract | Runtime bytes |
 |---|---:|
-| BloomFactory | 4,051 |
+| BloomFactory | 4,126 |
 | BloomTreasury | 4,623 |
-| StakedBLOOM | 14,526 |
-| StakedSIMD | 16,584 |
-| StakedETH | 15,858 |
-| ERC20Farm | 14,407 |
+| StakedBLOOM | 14,719 |
+| StakedSIMD | 16,848 |
+| StakedETH | 16,126 |
+| ERC20Farm | 14,600 |
 
 All are below 24,576 bytes; creation bytecode is below 49,152 bytes. Exact hashes and immutable slot references are in [artifact-hashes.json](artifact-hashes.json). Those runtime hashes are compiler templates; receipt-based deployed hashes are pending.
 

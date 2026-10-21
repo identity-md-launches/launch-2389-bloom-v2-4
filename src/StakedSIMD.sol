@@ -35,7 +35,7 @@ contract StakedSIMD is ERC20Farm {
         uint256 beforeSIMD = IERC20(asset).balanceOf(address(this));
         IERC20(IMD).safeTransferFrom(msg.sender, address(this), imdAssets);
         uint256 receivedIMD = IERC20(IMD).balanceOf(address(this)) - beforeIMD;
-        if (receivedIMD == 0) revert InvalidAmount();
+        if (receivedIMD != imdAssets) revert InexactTransfer();
         IERC20(IMD).forceApprove(asset, receivedIMD);
         // Official ERC-4626 deposit only. Ignore its return value and account the actual balance change.
         IStakedIMD(asset).deposit(receivedIMD, address(this));
@@ -51,6 +51,11 @@ contract StakedSIMD is ERC20Farm {
     /// @dev Withdraw sIMD, then redeem directly at the official vault when its maxRedeem permits it.
     function withdrawIMD(uint256, address, uint256) external pure {
         revert IMDRedemptionDisabled();
+    }
+
+    function _validRecipient(address recipient) internal view override {
+        super._validRecipient(recipient);
+        if (recipient == IMD) revert InvalidAddress();
     }
 
     function _verifyAsset() internal view override {

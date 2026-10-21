@@ -140,15 +140,29 @@ contract AdministrationTest is FarmFixture {
         _withdrawAll(alice);
     }
 
-    function testWhitelistRemovalOnlyStopsDeposits() public {
+    function testWhitelistGovernsAdmissionOnlyAndRenouncedPauseIsFinal() public {
         _deposit(alice, 100 ether);
-        vm.prank(owner);
+        vm.startPrank(owner);
+        farm.renouncePowers(farm.PAUSE());
+        vm.expectRevert(abi.encodeWithSelector(Managed.PowerRenounced.selector, farm.PAUSE()));
+        farm.setDepositsPaused(true);
+        // De-whitelisting is not a second deposit switch for an active farm.
         registry.whitelistAsset(address(bloom), false);
-        vm.prank(bob);
-        vm.expectRevert(Farm.DepositsPaused.selector);
-        farm.deposit(1, bob, 0);
+        vm.stopPrank();
+        _deposit(bob, 1 ether);
+        _fund(1 ether);
+        _start(1 ether, 1);
+        assertTrue(farm.epochRunning());
         _withdrawAll(alice);
-        assertEq(treasury.availableFees(address(bloom)), 15 ether);
+        _withdrawAll(bob);
+        assertGt(treasury.availableFees(address(bloom)), 3 ether);
+        // The whitelist still decides which assets may be registered.
+        MockToken token = new MockToken(18);
+        ERC20Farm future =
+            new ERC20Farm(owner, address(registry), address(treasury), address(bloom), address(token), 18);
+        vm.prank(owner);
+        vm.expectRevert(BloomFactory.NotWhitelisted.selector);
+        registry.registerFarm(address(future));
     }
 
     function testTreasuryOnlySpendsReceivedFeesNotDonationsOrFarmFunds() public {
@@ -182,21 +196,63 @@ contract AdministrationTest is FarmFixture {
         assertEq(treasury.spentFees(address(bloom)), 0);
     }
 
-    function testWrongChainAndDecimalsCannotActivate() public {
+    function testFarmThatCouldNeverActivateCannotTakeTheAssetSlot() public {
         MockToken token = new MockToken(6);
-        ERC20Farm future =
+        ERC20Farm wrongDecimals =
             new ERC20Farm(owner, address(registry), address(treasury), address(bloom), address(token), 18);
         vm.startPrank(owner);
         registry.whitelistAsset(address(token), true);
+        vm.expectRevert(Farm.InvalidDependency.selector);
+        registry.registerFarm(address(wrongDecimals));
+        bytes memory badInitCode = abi.encodePacked(
+            type(ERC20Farm).creationCode,
+            abi.encode(owner, address(registry), address(treasury), address(bloom), address(token), uint8(18))
+        );
+        vm.expectRevert(Farm.InvalidDependency.selector);
+        registry.deployFarm(badInitCode, bytes32(0));
+        assertEq(registry.farmForAsset(address(token)), address(0));
+        assertEq(registry.farmCount(), 1);
+        ERC20Farm future =
+            new ERC20Farm(owner, address(registry), address(treasury), address(bloom), address(token), 6);
+        vm.chainId(10);
+        vm.expectRevert(Farm.WrongChain.selector);
         registry.registerFarm(address(future));
+        vm.chainId(1);
+        registry.registerFarm(address(future));
+        assertEq(registry.farmForAsset(address(token)), address(future));
         vm.chainId(10);
         vm.expectRevert(Farm.WrongChain.selector);
         future.activate();
         vm.chainId(1);
-        vm.expectRevert(Farm.InvalidDependency.selector);
-        future.activate();
         vm.expectRevert(Farm.NotActive.selector);
         future.setDepositsPaused(false);
+        future.activate();
+        assertTrue(future.active());
+        vm.stopPrank();
+    }
+
+    function testStrandingRecipientsAreRejected() public {
+        _deposit(alice, 10 ether);
+        _fund(10 ether);
+        _start(10 ether, 1);
+        vm.warp(block.timestamp + 1 days);
+        vm.startPrank(alice);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        farm.withdraw(1 ether, payable(address(treasury)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        farm.withdraw(1 ether, payable(address(registry)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        farm.withdraw(1 ether, payable(address(bloom)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        farm.claimRewards(address(treasury));
+        farm.withdraw(1 ether, payable(bob), 0);
+        farm.claimRewards(bob);
+        vm.stopPrank();
+        bloom.mint(address(farm), 1 ether);
+        vm.startPrank(owner);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        farm.recoverExcess(address(bloom), payable(address(treasury)), 1 ether);
+        farm.recoverExcess(address(bloom), payable(owner), 1 ether);
         vm.stopPrank();
     }
 

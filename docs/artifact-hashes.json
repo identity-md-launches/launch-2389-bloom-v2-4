@@ -20,8 +20,8 @@
         "stateMutability": "nonpayable",
         "type": "constructor"
       },
-      "creationCodeBytesWithoutArguments": 4426,
-      "creationCodeKeccak256": "0x3742a91023db528d0230978307cffa89b08bf1d63f41af57f3751ab58506e0e2",
+      "creationCodeBytesWithoutArguments": 4501,
+      "creationCodeKeccak256": "0x2bdb942e83237a4f2dc1a2462bde9ba5839b9f3a53e106bc09d63c8a85059900",
       "immutableReferences": {
         "45123": [
           {
@@ -34,8 +34,8 @@
           }
         ]
       },
-      "runtimeBytes": 4051,
-      "runtimeTemplateKeccak256": "0x4eeaf2e6594c20a377a6f7418a8d375ac65ba0ec5b6b26a03a1872836f5e9f91",
+      "runtimeBytes": 4126,
+      "runtimeTemplateKeccak256": "0xad4c052cebb8229fef601a755d9eb291a41d4b379e1d8e51ba68b3d19615158a",
       "source": "src/BloomFactory.sol"
     },
     "BloomTreasury": {
@@ -94,250 +94,258 @@
         "stateMutability": "nonpayable",
         "type": "constructor"
       },
-      "creationCodeBytesWithoutArguments": 15838,
-      "creationCodeKeccak256": "0x23bb4147452e46bb250b2b0b18cf0226ff585d7a27685cb99f785676534c4bc4",
+      "creationCodeBytesWithoutArguments": 16047,
+      "creationCodeKeccak256": "0x937486e8648cbe2703bdf12b2579efe522f4b10e5cb1ca3b1b78981d47cbe46a",
       "immutableReferences": {
-        "46388": [
+        "46520": [
           {
             "length": 32,
-            "start": 1615
+            "start": 1666
           },
           {
             "length": 32,
-            "start": 2872
+            "start": 2898
           },
           {
             "length": 32,
-            "start": 3465
+            "start": 3491
           },
           {
             "length": 32,
-            "start": 11439
+            "start": 9227
           }
         ],
-        "46390": [
+        "46522": [
           {
             "length": 32,
-            "start": 1505
+            "start": 1556
           },
           {
             "length": 32,
-            "start": 3309
+            "start": 3335
           },
           {
             "length": 32,
-            "start": 3507
+            "start": 3533
           },
           {
             "length": 32,
-            "start": 12522
+            "start": 9168
           },
           {
             "length": 32,
-            "start": 12820
+            "start": 12583
           },
           {
             "length": 32,
-            "start": 12929
+            "start": 12881
           },
           {
             "length": 32,
-            "start": 13086
+            "start": 12990
+          },
+          {
+            "length": 32,
+            "start": 13147
           }
         ],
-        "46392": [
+        "46524": [
           {
             "length": 32,
-            "start": 1272
+            "start": 1323
           },
           {
             "length": 32,
-            "start": 3017
+            "start": 3043
           },
           {
             "length": 32,
-            "start": 3892
+            "start": 3771
           },
           {
             "length": 32,
-            "start": 3979
+            "start": 4411
           },
           {
             "length": 32,
-            "start": 4211
+            "start": 6084
           },
           {
             "length": 32,
-            "start": 4851
+            "start": 6212
           },
           {
             "length": 32,
-            "start": 6524
+            "start": 6285
           },
           {
             "length": 32,
-            "start": 6652
+            "start": 8225
           },
           {
             "length": 32,
-            "start": 6725
+            "start": 8312
           },
           {
             "length": 32,
-            "start": 9060
+            "start": 9287
           },
           {
             "length": 32,
-            "start": 9722
+            "start": 9959
           },
           {
             "length": 32,
-            "start": 9788
+            "start": 10025
           },
           {
             "length": 32,
-            "start": 9915
+            "start": 10152
           },
           {
             "length": 32,
-            "start": 10027
+            "start": 10264
           },
           {
             "length": 32,
-            "start": 11399
+            "start": 12537
           },
           {
             "length": 32,
-            "start": 12476
+            "start": 12719
           },
           {
             "length": 32,
-            "start": 12658
+            "start": 12847
           },
           {
             "length": 32,
-            "start": 12786
+            "start": 12941
           },
           {
             "length": 32,
-            "start": 12880
+            "start": 13113
           },
           {
             "length": 32,
-            "start": 13052
+            "start": 13217
           },
           {
             "length": 32,
-            "start": 13156
+            "start": 13378
           },
           {
             "length": 32,
-            "start": 13317
+            "start": 13418
           }
         ],
-        "46394": [
+        "46526": [
           {
             "length": 32,
-            "start": 2003
+            "start": 2054
           },
           {
             "length": 32,
-            "start": 3943
+            "start": 8276
           }
         ],
-        "46396": [
+        "46528": [
           {
             "length": 32,
-            "start": 1719
+            "start": 1770
           },
           {
             "length": 32,
-            "start": 5093
+            "start": 4653
           },
           {
             "length": 32,
-            "start": 8227
+            "start": 7819
           },
           {
             "length": 32,
-            "start": 11837
+            "start": 11898
           }
         ],
-        "46398": [
+        "46530": [
           {
             "length": 32,
-            "start": 2042
+            "start": 2093
           },
           {
             "length": 32,
-            "start": 5139
+            "start": 4699
           },
           {
             "length": 32,
-            "start": 8181
+            "start": 7773
           },
           {
             "length": 32,
-            "start": 11901
+            "start": 11962
           }
         ],
-        "47501": [
+        "47667": [
           {
             "length": 32,
-            "start": 2294
+            "start": 2345
           },
           {
             "length": 32,
-            "start": 3153
+            "start": 3179
           },
           {
             "length": 32,
-            "start": 3685
+            "start": 3735
           },
           {
             "length": 32,
-            "start": 3729
+            "start": 4023
           },
           {
             "length": 32,
-            "start": 4175
+            "start": 4473
           },
           {
             "length": 32,
-            "start": 4463
+            "start": 5164
           },
           {
             "length": 32,
-            "start": 4913
+            "start": 5292
           },
           {
             "length": 32,
-            "start": 5604
+            "start": 5355
           },
           {
             "length": 32,
-            "start": 5732
+            "start": 7646
           },
           {
             "length": 32,
-            "start": 5795
+            "start": 8018
           },
           {
             "length": 32,
-            "start": 8054
+            "start": 8062
           },
           {
             "length": 32,
-            "start": 9985
+            "start": 9347
           },
           {
             "length": 32,
-            "start": 10105
+            "start": 10222
+          },
+          {
+            "length": 32,
+            "start": 10342
           }
         ]
       },
-      "runtimeBytes": 14407,
-      "runtimeTemplateKeccak256": "0xf9b5c9b72e8e46276c8460e4fd918e2637cbc7091264c1f29817512c55971eca",
+      "runtimeBytes": 14600,
+      "runtimeTemplateKeccak256": "0x3f458906f54fcd2d107cd2ec42f33ad89fc146b13eae8e260f421251542c2938",
       "source": "src/core/ERC20Farm.sol"
     },
     "StakedBLOOM": {
@@ -372,250 +380,258 @@
         "stateMutability": "nonpayable",
         "type": "constructor"
       },
-      "creationCodeBytesWithoutArguments": 15953,
-      "creationCodeKeccak256": "0x835b6b7513aea54f4608d97db60e9337ca045709d80fcb728fa5c1be64cca7fc",
+      "creationCodeBytesWithoutArguments": 16162,
+      "creationCodeKeccak256": "0x7f16f4c62eb74efc17b7fdba0c38f08c52a1378c8ff04619d50a1d21dbae14d6",
       "immutableReferences": {
-        "46388": [
+        "46520": [
           {
             "length": 32,
-            "start": 1681
+            "start": 1732
           },
           {
             "length": 32,
-            "start": 2938
+            "start": 2964
           },
           {
             "length": 32,
-            "start": 3531
+            "start": 3557
           },
           {
             "length": 32,
-            "start": 11505
+            "start": 9293
           }
         ],
-        "46390": [
+        "46522": [
           {
             "length": 32,
-            "start": 1571
+            "start": 1622
           },
           {
             "length": 32,
-            "start": 3375
+            "start": 3401
           },
           {
             "length": 32,
-            "start": 3573
+            "start": 3599
           },
           {
             "length": 32,
-            "start": 12588
+            "start": 9234
           },
           {
             "length": 32,
-            "start": 12886
+            "start": 12649
           },
           {
             "length": 32,
-            "start": 12995
+            "start": 12947
           },
           {
             "length": 32,
-            "start": 13152
+            "start": 13056
+          },
+          {
+            "length": 32,
+            "start": 13213
           }
         ],
-        "46392": [
+        "46524": [
           {
             "length": 32,
-            "start": 1338
+            "start": 1389
           },
           {
             "length": 32,
-            "start": 3083
+            "start": 3109
           },
           {
             "length": 32,
-            "start": 3958
+            "start": 3837
           },
           {
             "length": 32,
-            "start": 4045
+            "start": 4477
           },
           {
             "length": 32,
-            "start": 4277
+            "start": 6150
           },
           {
             "length": 32,
-            "start": 4917
+            "start": 6278
           },
           {
             "length": 32,
-            "start": 6590
+            "start": 6351
           },
           {
             "length": 32,
-            "start": 6718
+            "start": 8291
           },
           {
             "length": 32,
-            "start": 6791
+            "start": 8378
           },
           {
             "length": 32,
-            "start": 9126
+            "start": 9353
           },
           {
             "length": 32,
-            "start": 9788
+            "start": 10025
           },
           {
             "length": 32,
-            "start": 9854
+            "start": 10091
           },
           {
             "length": 32,
-            "start": 9981
+            "start": 10218
           },
           {
             "length": 32,
-            "start": 10093
+            "start": 10330
           },
           {
             "length": 32,
-            "start": 11465
+            "start": 12603
           },
           {
             "length": 32,
-            "start": 12542
+            "start": 12785
           },
           {
             "length": 32,
-            "start": 12724
+            "start": 12913
           },
           {
             "length": 32,
-            "start": 12852
+            "start": 13007
           },
           {
             "length": 32,
-            "start": 12946
+            "start": 13179
           },
           {
             "length": 32,
-            "start": 13118
+            "start": 13283
           },
           {
             "length": 32,
-            "start": 13222
+            "start": 13444
           },
           {
             "length": 32,
-            "start": 13383
+            "start": 13484
           }
         ],
-        "46394": [
+        "46526": [
           {
             "length": 32,
-            "start": 2069
+            "start": 2120
           },
           {
             "length": 32,
-            "start": 4009
+            "start": 8342
           }
         ],
-        "46396": [
+        "46528": [
           {
             "length": 32,
-            "start": 1785
+            "start": 1836
           },
           {
             "length": 32,
-            "start": 5159
+            "start": 4719
           },
           {
             "length": 32,
-            "start": 8293
+            "start": 7885
           },
           {
             "length": 32,
-            "start": 11903
+            "start": 11964
           }
         ],
-        "46398": [
+        "46530": [
           {
             "length": 32,
-            "start": 2108
+            "start": 2159
           },
           {
             "length": 32,
-            "start": 5205
+            "start": 4765
           },
           {
             "length": 32,
-            "start": 8247
+            "start": 7839
           },
           {
             "length": 32,
-            "start": 11967
+            "start": 12028
           }
         ],
-        "47501": [
+        "47667": [
           {
             "length": 32,
-            "start": 2360
+            "start": 2411
           },
           {
             "length": 32,
-            "start": 3219
+            "start": 3245
           },
           {
             "length": 32,
-            "start": 3751
+            "start": 3801
           },
           {
             "length": 32,
-            "start": 3795
+            "start": 4089
           },
           {
             "length": 32,
-            "start": 4241
+            "start": 4539
           },
           {
             "length": 32,
-            "start": 4529
+            "start": 5230
           },
           {
             "length": 32,
-            "start": 4979
+            "start": 5358
           },
           {
             "length": 32,
-            "start": 5670
+            "start": 5421
           },
           {
             "length": 32,
-            "start": 5798
+            "start": 7712
           },
           {
             "length": 32,
-            "start": 5861
+            "start": 8084
           },
           {
             "length": 32,
-            "start": 8120
+            "start": 8128
           },
           {
             "length": 32,
-            "start": 10051
+            "start": 9413
           },
           {
             "length": 32,
-            "start": 10171
+            "start": 10288
+          },
+          {
+            "length": 32,
+            "start": 10408
           }
         ]
       },
-      "runtimeBytes": 14526,
-      "runtimeTemplateKeccak256": "0x8ea271b8343e9e51a524fd1ebbfabc0af83f2d6da4b6905925c162443378ccbf",
+      "runtimeBytes": 14719,
+      "runtimeTemplateKeccak256": "0xad19988513cfa92ce251e2ba4a6bc399a612c885f082bd237ebdd9be74e07b09",
       "source": "src/StakedBLOOM.sol"
     },
     "StakedETH": {
@@ -645,234 +661,242 @@
         "stateMutability": "nonpayable",
         "type": "constructor"
       },
-      "creationCodeBytesWithoutArguments": 17180,
-      "creationCodeKeccak256": "0xb45c0c749ad6cfa6132139a14c8c5fccb0d666ac9bf297f8786738dcefc5fbdf",
+      "creationCodeBytesWithoutArguments": 17464,
+      "creationCodeKeccak256": "0x5a73825482a8328547053dadde56fc26c3983d62c8702debd64babe006e1c6ef",
       "immutableReferences": {
-        "46388": [
+        "46520": [
           {
             "length": 32,
-            "start": 2104
+            "start": 2179
           },
           {
             "length": 32,
-            "start": 3894
+            "start": 3956
           },
           {
             "length": 32,
-            "start": 4487
+            "start": 4549
           },
           {
             "length": 32,
-            "start": 11742
+            "start": 14777
           }
         ],
-        "46390": [
+        "46522": [
           {
             "length": 32,
-            "start": 1898
+            "start": 1973
           },
           {
             "length": 32,
-            "start": 4331
+            "start": 4393
           },
           {
             "length": 32,
-            "start": 4529
+            "start": 4591
           },
           {
             "length": 32,
-            "start": 13399
+            "start": 13049
           },
           {
             "length": 32,
-            "start": 13697
+            "start": 13347
           },
           {
             "length": 32,
-            "start": 13806
+            "start": 13456
           },
           {
             "length": 32,
-            "start": 13963
+            "start": 13613
+          },
+          {
+            "length": 32,
+            "start": 14718
           }
         ],
-        "46392": [
+        "46524": [
           {
             "length": 32,
-            "start": 1502
+            "start": 1577
           },
           {
             "length": 32,
-            "start": 4039
+            "start": 4101
           },
           {
             "length": 32,
-            "start": 4914
+            "start": 4829
           },
           {
             "length": 32,
-            "start": 5001
+            "start": 5469
           },
           {
             "length": 32,
-            "start": 5233
+            "start": 8882
           },
           {
             "length": 32,
-            "start": 5873
+            "start": 8969
           },
           {
             "length": 32,
-            "start": 10589
+            "start": 10415
           },
           {
             "length": 32,
-            "start": 10655
+            "start": 10481
           },
           {
             "length": 32,
-            "start": 10782
+            "start": 10608
           },
           {
             "length": 32,
-            "start": 10894
+            "start": 10720
           },
           {
             "length": 32,
-            "start": 11702
+            "start": 13003
           },
           {
             "length": 32,
-            "start": 13353
+            "start": 13185
           },
           {
             "length": 32,
-            "start": 13535
+            "start": 13313
           },
           {
             "length": 32,
-            "start": 13663
+            "start": 13407
           },
           {
             "length": 32,
-            "start": 13757
+            "start": 13579
           },
           {
             "length": 32,
-            "start": 13929
+            "start": 13683
           },
           {
             "length": 32,
-            "start": 14033
+            "start": 14837
           }
         ],
-        "46394": [
+        "46526": [
           {
             "length": 32,
-            "start": 2809
+            "start": 2884
           },
           {
             "length": 32,
-            "start": 4965
+            "start": 8933
           }
         ],
-        "46396": [
+        "46528": [
           {
             "length": 32,
-            "start": 2268
+            "start": 2343
           },
           {
             "length": 32,
-            "start": 6179
+            "start": 5775
           },
           {
             "length": 32,
-            "start": 8880
+            "start": 8476
           },
           {
             "length": 32,
-            "start": 12140
+            "start": 11790
           }
         ],
-        "46398": [
+        "46530": [
           {
             "length": 32,
-            "start": 2860
+            "start": 2935
           },
           {
             "length": 32,
-            "start": 6225
+            "start": 5821
           },
           {
             "length": 32,
-            "start": 8834
+            "start": 8430
           },
           {
             "length": 32,
-            "start": 12204
+            "start": 11854
           }
         ],
-        "47501": [
+        "47667": [
           {
             "length": 32,
-            "start": 3292
+            "start": 3367
           },
           {
             "length": 32,
-            "start": 4175
+            "start": 4237
           },
           {
             "length": 32,
-            "start": 4707
+            "start": 4793
           },
           {
             "length": 32,
-            "start": 4751
+            "start": 5081
           },
           {
             "length": 32,
-            "start": 5197
+            "start": 5531
           },
           {
             "length": 32,
-            "start": 5485
+            "start": 6286
           },
           {
             "length": 32,
-            "start": 5935
+            "start": 6414
           },
           {
             "length": 32,
-            "start": 6690
+            "start": 6477
           },
           {
             "length": 32,
-            "start": 6818
+            "start": 8303
           },
           {
             "length": 32,
-            "start": 6881
+            "start": 8675
           },
           {
             "length": 32,
-            "start": 8707
+            "start": 8719
           },
           {
             "length": 32,
-            "start": 9906
+            "start": 10678
           },
           {
             "length": 32,
-            "start": 10852
+            "start": 10798
           },
           {
             "length": 32,
-            "start": 10972
+            "start": 14614
+          },
+          {
+            "length": 32,
+            "start": 14897
           }
         ]
       },
-      "runtimeBytes": 15858,
-      "runtimeTemplateKeccak256": "0xc7dfe8d2ad08db30353e627ecc7feb4171d5bf6a573ff4cc07e19d4f20373019",
+      "runtimeBytes": 16126,
+      "runtimeTemplateKeccak256": "0x3b8783511fc35bbbde737227e848c035f329a3ad71fffeea034ccadd1de11eec",
       "source": "src/StakedETH.sol"
     },
     "StakedSIMD": {
@@ -902,290 +926,298 @@
         "stateMutability": "nonpayable",
         "type": "constructor"
       },
-      "creationCodeBytesWithoutArguments": 18076,
-      "creationCodeKeccak256": "0x9e126c1312264fb8cd6655f23840235aa280e6b5a6d6508f6d22143a2a56c85b",
+      "creationCodeBytesWithoutArguments": 18356,
+      "creationCodeKeccak256": "0xa55aab9728416feace954232a8338b7ebbab0b0813f4365e469982f4fd7d1cc6",
       "immutableReferences": {
-        "46388": [
+        "46520": [
           {
             "length": 32,
-            "start": 1731
+            "start": 1782
           },
           {
             "length": 32,
-            "start": 3053
+            "start": 3079
           },
           {
             "length": 32,
-            "start": 3646
+            "start": 3672
           },
           {
             "length": 32,
-            "start": 13431
+            "start": 15494
           }
         ],
-        "46390": [
+        "46522": [
           {
             "length": 32,
-            "start": 1614
+            "start": 1665
           },
           {
             "length": 32,
-            "start": 3490
+            "start": 3516
           },
           {
             "length": 32,
-            "start": 3688
+            "start": 3714
           },
           {
             "length": 32,
-            "start": 14657
+            "start": 13942
           },
           {
             "length": 32,
-            "start": 14955
+            "start": 14240
           },
           {
             "length": 32,
-            "start": 15064
+            "start": 14349
           },
           {
             "length": 32,
-            "start": 15221
+            "start": 14506
+          },
+          {
+            "length": 32,
+            "start": 15435
           }
         ],
-        "46392": [
+        "46524": [
           {
             "length": 32,
-            "start": 1381
+            "start": 1432
           },
           {
             "length": 32,
-            "start": 3198
+            "start": 3224
           },
           {
             "length": 32,
-            "start": 4073
+            "start": 3952
           },
           {
             "length": 32,
-            "start": 4160
+            "start": 4592
           },
           {
             "length": 32,
-            "start": 4392
+            "start": 6391
           },
           {
             "length": 32,
-            "start": 5032
+            "start": 6717
           },
           {
             "length": 32,
-            "start": 6831
+            "start": 6782
           },
           {
             "length": 32,
-            "start": 7157
+            "start": 6923
           },
           {
             "length": 32,
-            "start": 7222
+            "start": 7138
           },
           {
             "length": 32,
-            "start": 7363
+            "start": 7476
           },
           {
             "length": 32,
-            "start": 7578
+            "start": 7604
           },
           {
             "length": 32,
-            "start": 7916
+            "start": 7677
           },
           {
             "length": 32,
-            "start": 8044
+            "start": 9642
           },
           {
             "length": 32,
-            "start": 8117
+            "start": 9729
           },
           {
             "length": 32,
-            "start": 10644
+            "start": 11175
           },
           {
             "length": 32,
-            "start": 10861
+            "start": 11241
           },
           {
             "length": 32,
-            "start": 11025
+            "start": 11368
           },
           {
             "length": 32,
-            "start": 11714
+            "start": 11480
           },
           {
             "length": 32,
-            "start": 11780
+            "start": 13896
           },
           {
             "length": 32,
-            "start": 11907
+            "start": 14078
           },
           {
             "length": 32,
-            "start": 12019
+            "start": 14206
           },
           {
             "length": 32,
-            "start": 13391
+            "start": 14300
           },
           {
             "length": 32,
-            "start": 14611
+            "start": 14472
           },
           {
             "length": 32,
-            "start": 14793
+            "start": 14576
           },
           {
             "length": 32,
-            "start": 14921
+            "start": 14737
           },
           {
             "length": 32,
-            "start": 15015
+            "start": 14944
           },
           {
             "length": 32,
-            "start": 15187
+            "start": 15161
           },
           {
             "length": 32,
-            "start": 15291
+            "start": 15325
           },
           {
             "length": 32,
-            "start": 15452
+            "start": 15554
           },
           {
             "length": 32,
-            "start": 15492
+            "start": 16040
           }
         ],
-        "46394": [
+        "46526": [
           {
             "length": 32,
-            "start": 2138
+            "start": 2189
           },
           {
             "length": 32,
-            "start": 4124
+            "start": 9693
           }
         ],
-        "46396": [
+        "46528": [
           {
             "length": 32,
-            "start": 1835
+            "start": 1886
           },
           {
             "length": 32,
-            "start": 5274
+            "start": 4834
           },
           {
             "length": 32,
-            "start": 9644
+            "start": 9236
           },
           {
             "length": 32,
-            "start": 13972
+            "start": 13257
           }
         ],
-        "46398": [
+        "46530": [
           {
             "length": 32,
-            "start": 2177
+            "start": 2228
           },
           {
             "length": 32,
-            "start": 5320
+            "start": 4880
           },
           {
             "length": 32,
-            "start": 9598
+            "start": 9190
           },
           {
             "length": 32,
-            "start": 14036
+            "start": 13321
           }
         ],
-        "47501": [
+        "47667": [
           {
             "length": 32,
-            "start": 2475
+            "start": 2526
           },
           {
             "length": 32,
-            "start": 3334
+            "start": 3360
           },
           {
             "length": 32,
-            "start": 3866
+            "start": 3916
           },
           {
             "length": 32,
-            "start": 3910
+            "start": 4204
           },
           {
             "length": 32,
-            "start": 4356
+            "start": 4654
           },
           {
             "length": 32,
-            "start": 4644
+            "start": 5345
           },
           {
             "length": 32,
-            "start": 5094
+            "start": 5473
           },
           {
             "length": 32,
-            "start": 5785
+            "start": 5536
           },
           {
             "length": 32,
-            "start": 5913
+            "start": 9063
           },
           {
             "length": 32,
-            "start": 5976
+            "start": 9435
           },
           {
             "length": 32,
-            "start": 9471
+            "start": 9479
           },
           {
             "length": 32,
-            "start": 10790
+            "start": 11438
           },
           {
             "length": 32,
-            "start": 10903
+            "start": 11558
           },
           {
             "length": 32,
-            "start": 11977
+            "start": 15090
           },
           {
             "length": 32,
-            "start": 12097
+            "start": 15203
+          },
+          {
+            "length": 32,
+            "start": 15614
           }
         ]
       },
-      "runtimeBytes": 16584,
-      "runtimeTemplateKeccak256": "0x490f8eb2a1ef82b9b08b1d0b01b5951fba58f5d17383ce55fad53278b62d4986",
+      "runtimeBytes": 16848,
+      "runtimeTemplateKeccak256": "0x628437eec4010245fc7b0380333ae1e0067364a4f4042a68af9ae18627293abb",
       "source": "src/StakedSIMD.sol"
     }
   },
@@ -1203,16 +1235,16 @@
     "scripts/export_artifacts.py": "edbe220a0b81d420075f63007ba534dee1a6d8a5ff922d506564c07d724cca3d",
     "scripts/prepare_deployment.py": "cb819f4f9f2c8670e81921686459cbc72a6176014b94b625831952b1e69f7ed1",
     "scripts/verify_mainnet.py": "55b05e158f84ba9163e82a4b278a281ce08b41ff533693a46e871484f3d11076",
-    "src/BloomFactory.sol": "6dacacaeaae9d8b8abd870a429e92f13897747ee44ec4a377e3443a94cf217d7",
+    "src/BloomFactory.sol": "8f41ee9f2dfe92df895fe06dfd52131c9f75c05d5982941ddbbcc34024297787",
     "src/BloomTreasury.sol": "dfefdf58e368ea97a92337f755a3c201efb4b5f38fe318ea652a522db417bf96",
     "src/MainnetAssets.sol": "0d00b852ae11c9517309625fac177addcfe1b90a77192f1e7993312951247944",
     "src/StakedBLOOM.sol": "efac3f865a25ee39e1fbdaa7715e57821171f80779538e500b5b21dec643f758",
-    "src/StakedETH.sol": "000f00080e18b3d5a64bf5fea396321ae109c45c379c2046cab8b147d9c8e917",
-    "src/StakedSIMD.sol": "825bb4a6c61af00fcd693a23183cec5bf38e6647f4e504ccd008e18e1f0729d3",
-    "src/core/ERC20Farm.sol": "fa4922fdfbc4c6e2e3cef89bf1484c90066dd03a594b8cb9a481097eea34d3a5",
-    "src/core/Farm.sol": "e4099a6c2a7404952e2b1785fadbefa45e4061546ad39429fa8a96d749188fd1",
+    "src/StakedETH.sol": "025eabfa6c218bdd339c4d7515e9c6b28d1bc1ccb6d3ad5574e543037f7f37a5",
+    "src/StakedSIMD.sol": "ecaa06c1e2e7b1978f61beb422d9b43466afe263a6ea11e7f4a94af127cac1eb",
+    "src/core/ERC20Farm.sol": "5b790ac7473f88f25bbb32296bc664910b84e5252fcd9fe1a6eacca6e35af216",
+    "src/core/Farm.sol": "841be186dd8f3594b13a4ae62036b7f223f6b6a265094b46b222fdefc46be53c",
     "src/core/Managed.sol": "0dcc5d5601c70acc47b48219e338a08b68f93179fef4d3ee4d4eff3fe12087cb",
-    "src/core/RewardLedger.sol": "a1bbc71cdc1b80d6089bdcc162eb45351490e4e828ce58f7624ea02e994fe4f6",
-    "src/interfaces/IBloom.sol": "6c99f43c7a7c8548bda6a0c68ee252748a9a6224ae24657631be0065e6b2f327"
+    "src/core/RewardLedger.sol": "5e24ef888345475fc4a1bc0591a1ca9efa2122e29971d70ca98099cbd296ca5d",
+    "src/interfaces/IBloom.sol": "c26b164c89426c87c599aa21c3dfbcaf1bbb84fab664c5598308c07f3787bcdc"
   }
 }

@@ -137,6 +137,20 @@ contract IMDIntegrationTest is FarmFixture {
         vm.stopPrank();
     }
 
+    function testTokenAndVaultContractsAreRejectedAsBeneficiaries() public {
+        vm.prank(alice);
+        uint256 shares = simdFarm.depositIMD(100 ether, alice, 1, 1);
+        vm.startPrank(alice);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.withdraw(shares, payable(address(imd)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.withdraw(shares, payable(address(simd)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.depositIMD(1 ether, address(imd), 1, 1);
+        vm.stopPrank();
+        assertEq(simdFarm.sharesOf(alice), shares);
+    }
+
     function testProtocolDepositFailureRollsBackAndNoDexFallback() public {
         // Model an external protocol failure: a call returns without consuming IMD or minting sIMD.
         vm.mockCall(

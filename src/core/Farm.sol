@@ -12,6 +12,11 @@ abstract contract Farm is RewardLedger {
     using SafeERC20 for IERC20;
 
     uint8 public constant decimals = 18;
+    /// @notice Virtual offsets below this many asset decimals are one raw asset unit; at or above it
+    /// they are a fixed `VIRTUAL_SHARE_QUANTA` share quanta, so the virtual position never drops under
+    /// 10^6 quanta and a single remaining share can no longer set a coarse price for later depositors.
+    uint8 public constant VIRTUAL_PIVOT_DECIMALS = 12;
+    uint256 public constant VIRTUAL_SHARE_QUANTA = 1e6;
     uint256 public constant USER_BPS = 8500;
     uint256 public constant TREASURY_BPS = 100;
     uint256 public constant BPS = 10_000;
@@ -63,19 +68,30 @@ abstract contract Farm is RewardLedger {
         treasury = treasury_;
         asset = asset_;
         assetDecimals = assetDecimals_;
-        virtualAssets = assetDecimals_ > 18 ? 10 ** (assetDecimals_ - 18) : 1;
-        virtualShares = assetDecimals_ < 18 ? 10 ** (18 - assetDecimals_) : 1;
+        // Initial rate stays 1 whole asset = 1 whole 18-decimal share for every supported decimal count.
+        virtualAssets =
+            assetDecimals_ > VIRTUAL_PIVOT_DECIMALS ? 10 ** (assetDecimals_ - VIRTUAL_PIVOT_DECIMALS) : 1;
+        virtualShares =
+            assetDecimals_ < VIRTUAL_PIVOT_DECIMALS ? 10 ** (18 - assetDecimals_) : VIRTUAL_SHARE_QUANTA;
     }
 
     /// @notice Explicit owner-only verification; never enables deposits or emissions.
     function activate() external withPower(CONFIG) nonReentrant {
         if (active) revert AlreadyActive();
-        if (block.chainid != 1) revert WrongChain();
         IBloomRegistry r = IBloomRegistry(registry);
         if (
             !r.isFarm(address(this)) || r.farmForAsset(asset) != address(this) || r.bloom() != rewardToken
                 || r.treasury() != treasury || IFeeTreasuryRegistry(treasury).registry() != registry
         ) revert InvalidDependency();
+        verifyDependencies();
+        active = true;
+        emit Activated(asset, rewardToken);
+    }
+
+    /// @notice Every chain/token precondition of activate() other than registry membership. The registry
+    /// runs it before registration, so a farm that could never activate never occupies an asset slot.
+    function verifyDependencies() public view {
+        if (block.chainid != 1) revert WrongChain();
         if (rewardToken.code.length == 0 || IERC20Metadata(rewardToken).decimals() > 36) {
             revert InvalidDependency();
         }
@@ -83,8 +99,6 @@ abstract contract Farm is RewardLedger {
             revert InvalidDependency();
         }
         _verifyAsset();
-        active = true;
-        emit Activated(asset, rewardToken);
     }
 
     function setDepositsPaused(bool paused) external withPower(PAUSE) {
@@ -101,9 +115,17 @@ abstract contract Farm is RewardLedger {
         _requireDepositAllowed();
     }
 
+    /// @dev The registry whitelist admits assets at registration only. Once a farm is active, its own
+    /// PAUSE power is the sole deposit switch, so renouncing that power is final.
     function _requireDepositAllowed() internal view {
         _requireActive();
-        if (depositsPaused || !IBloomRegistry(registry).isAssetWhitelisted(asset)) revert DepositsPaused();
+        if (depositsPaused) revert DepositsPaused();
+    }
+
+    /// @dev Contracts that would strand a payout: the farm itself, Treasury, registry and the tokens.
+    function _validRecipient(address recipient) internal view virtual override {
+        super._validRecipient(recipient);
+        if (recipient == treasury || recipient == registry || recipient == asset || recipient == rewardToken) revert InvalidAddress();
     }
 
     /// @notice Raw underlying units to 18-decimal, internal, nontransferable shares, rounded DOWN.

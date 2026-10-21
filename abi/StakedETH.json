@@ -170,6 +170,32 @@
   },
   {
     "inputs": [],
+    "name": "VIRTUAL_PIVOT_DECIMALS",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "VIRTUAL_SHARE_QUANTA",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "WETH",
     "outputs": [
       {
@@ -1070,6 +1096,13 @@
         "type": "uint256"
       }
     ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "verifyDependencies",
+    "outputs": [],
     "stateMutability": "view",
     "type": "function"
   },

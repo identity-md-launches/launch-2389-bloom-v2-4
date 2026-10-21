@@ -30,6 +30,12 @@ contract StakedETH is Farm {
         return _mintShares(beneficiary, msg.value, minSharesOut);
     }
 
+    /// @dev WETH9's fallback would credit the farm, not the user; the Treasury cannot spend unrecorded WETH.
+    function _validRecipient(address recipient) internal view override {
+        super._validRecipient(recipient);
+        if (recipient == WETH) revert InvalidAddress();
+    }
+
     function _verifyAsset() internal view override {
         if (
             WETH.codehash != MainnetAssets.WETH_CODE_HASH || IERC20Metadata(WETH).decimals() != 18

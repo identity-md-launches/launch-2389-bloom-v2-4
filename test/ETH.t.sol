@@ -114,6 +114,22 @@ contract ETHTest is FarmFixture {
         assertEq(IERC20(weth).balanceOf(address(ethFarm)), 0);
     }
 
+    function testWETHAndTreasuryBeneficiariesAreRejectedBeforeAnyPayout() public {
+        _depositETH(alice, 10 ether, alice);
+        vm.startPrank(alice);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.withdraw(10 ether, payable(weth), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.withdraw(10 ether, payable(address(treasury)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.deposit{value: 1 ether}(weth, 0);
+        vm.stopPrank();
+        assertEq(ethFarm.sharesOf(alice), 10 ether);
+        assertEq(IERC20(weth).balanceOf(address(ethFarm)), 0);
+        assertEq(IERC20(weth).balanceOf(address(treasury)), 0);
+        assertEq(address(ethFarm).balance, 10 ether);
+    }
+
     function testGasGriefCannotPreventWETHFallback() public {
         ExhaustGas beneficiary = new ExhaustGas();
         _depositETH(alice, 10 ether, alice);

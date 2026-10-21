@@ -7,13 +7,15 @@ All token amounts are raw units. A farm's share unit is `10^-18` of an internal 
 For underlying decimals `d` (supported range 0–36):
 
 ```
-Va = 10^max(d - 18, 0)
-Vs = 10^max(18 - d, 0)
+Va = 10^max(d - 12, 0)
+Vs = 10^(18 - min(d, 12))          # never below 10^6 share quanta
 sharesOut = floor(netAssets * (S + Vs) / (A + Va))
 gross = floor(sharesBurned * (A + Va) / (S + Vs))   # partial supply redemption
 ```
 
-OpenZeppelin `Math.mulDiv` computes the full 512-bit product before division. Minting rejects totals that would leave insufficient uint256 headroom for either virtual offset, so an extreme deposit cannot make later partial exits overflow. `Va`/`Vs` represent a single 18-decimal share quantum, normalized to raw underlying units. Initially, 1 whole underlying token mints 1 whole farm share for every supported decimal count. The verified sIMD's 24 decimals imply `Va = 1,000,000`, `Vs = 1`: at an empty farm, less than 1,000,000 raw sIMD units would mint zero farm shares and is rejected.
+OpenZeppelin `Math.mulDiv` computes the full 512-bit product before division. Minting rejects totals that would leave insufficient uint256 headroom for either virtual offset, so an extreme deposit cannot make later partial exits overflow. `Va`/`Vs` are the same virtual position expressed in raw underlying units and in share quanta, so initially 1 whole underlying token mints 1 whole farm share for every supported decimal count. For 18-decimal BLOOM and ETH `Va = Vs = 10^6`; for the verified 24-decimal sIMD `Va = 10^12`, `Vs = 10^6`, so at an empty farm less than 1,000,000 raw sIMD units would mint zero farm shares and is rejected; for a 6-decimal future asset `Va = 1`, `Vs = 10^12`.
+
+The retained 14% fee is the sanctioned way to raise `A` without minting, so a holder who exits all but one quantum, or a 1-wei holder who stays in after a large exit, leaves one real share backed by 14% of the exited gross. Because the virtual position is at least `10^6` quanta, the price seen by the next depositor is `(A + Va) / (S + Vs) <= (A + Va) / 10^6` per quantum, and the next deposit's rounding loss is bounded by that single quantum: at most one millionth of the backing, before the ordinary 15% withdrawal fee. Setting up such a state costs the remaining holder 1% of the exited gross immediately and 15% of the retained backing at its own final exit, so it cannot profit from later depositors even though the last redemption pays out the whole residual `A`. The test `testRetainedFeeInflationSetupIsUnprofitableAndLossBoundedByOneQuantum` fixes both bounds.
 
 The farm uses recorded receipt amounts, never its live token balance, to change `A`. Thus unsolicited transfers cannot inflate share price, affect a new depositor's mint, or become reward funding. `excessBalance(token)` computes surplus after reserving **both** underlying and reward obligations for a same-token farm. Excess can be recovered only up to that surplus.
 
@@ -37,7 +39,7 @@ Exactly: `gross = user + treasury + retained` and `A_before - A_after = user + t
 
 Partial exits leave the user's remaining shares eligible for their fraction of retained fees. Anyone may deposit immediately before an exit and participate; this is the accepted economic behavior. There is no eligibility timestamp or address exemption.
 
-`minSharesOut` bounds the minted amount. `minAssetsOut` bounds the **net user payout**, after the split. Outbound ERC20 balance changes must match both the farm debit and recipient credit; taxed transfers fail atomically. Very small burns may yield zero raw payout, allowed only when `minAssetsOut` permits it, so dust cannot prevent zero-supply reset.
+`minSharesOut` bounds the minted amount. `minAssetsOut` bounds the **net user payout**, after the split. An ERC20 deposit must credit the farm with exactly the requested amount, and outbound ERC20 balance changes must match both the farm debit and recipient credit; taxed transfers fail atomically in both directions, so a taxed token can never hold principal it could not pay back. Beneficiaries that would strand a payout (the farm, Treasury, registry, underlying or reward token, WETH for the ETH farm, IMD for the sIMD farm) are rejected before any state change. Very small burns may yield zero raw payout, allowed only when `minAssetsOut` permits it, so dust cannot prevent zero-supply reset.
 
 ## Reward conservation
 

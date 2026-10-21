@@ -290,7 +290,7 @@ abstract contract RewardLedger is Managed, ReentrancyGuard {
         ) revert InexactTransfer();
     }
 
-    function _validRecipient(address recipient) internal view {
+    function _validRecipient(address recipient) internal view virtual {
         if (recipient == address(0) || recipient == address(this)) revert InvalidAddress();
     }
 

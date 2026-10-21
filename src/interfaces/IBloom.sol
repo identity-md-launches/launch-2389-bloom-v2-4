@@ -18,6 +18,7 @@ interface IBloomFarm {
     function rewardToken() external view returns (address);
     function active() external view returns (bool);
     function depositsPaused() external view returns (bool);
+    function verifyDependencies() external view;
 }
 
 interface IFeeTreasury {
