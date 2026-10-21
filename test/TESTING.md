@@ -11,8 +11,8 @@ unchanged. All new fixtures and tests run offline.
 | `NetworkInvariants.t.sol` | Stateful, four-actor sequences across BLOOM, sIMD, ETH and Treasury; measured custody ghosts; separate reward budgets; donations and recovery; partial/final exits; native/WETH payout; epoch transitions; pause/delist; Treasury spending; complete settlement after every campaign. |
 | `EdgeProperties.t.sol` | 1,000 cases per property for decimals 0–36, donation isolation, repeated round trips and claim-frequency independence; one-unit dust; gift deposits; old claims across pool reset; timestamp overflow; rollback at epoch boundaries. |
 | `AuthorityFailures.t.sol` | Unauthorized calls across all privileged farm operations; Factory/Treasury protection; selective renunciation across ownership transfer; failed CREATE2 registration and reusable salt; malformed initcode; event amounts and beneficiaries. |
-| `TokenFailures.t.sol` | Optional, false and nonboolean ERC20 returns; measured net funding; zero net receipts; transfer-tax failures; inbound/outbound callback protection; atomic claim, withdrawal, recovery and Treasury spending. |
-| `IntegrationFailures.t.sol` | Dependency identity/metadata checks; paused official vault; sIMD rounding to zero farm shares; preexisting IMD donation isolation; independent farm budgets; failed ETH fallback with earned rewards; native callback/recovery/Treasury failures. |
+| `TokenFailures.t.sol` | Optional, false and nonboolean ERC20 returns; measured net funding; zero and partially taxed receipts refused with `InexactTransfer`; transfer-tax failures; inbound/outbound callback protection; atomic claim, withdrawal, recovery and Treasury spending. |
+| `IntegrationFailures.t.sol` | Dependency identity/metadata/chain checks at registration and again at activation; pause (not delisting) gates both sIMD inputs; WETH/IMD/sIMD/Treasury recipients refused; paused official vault; sIMD rounding to zero farm shares; preexisting IMD donation isolation; independent farm budgets; failed ETH fallback with earned rewards; native callback/recovery/Treasury failures. |
 
 ## Stateful properties and inputs
 
@@ -34,7 +34,7 @@ The independent transfer counters constrain:
 - Temporary Treasury and IMD staking approvals are cleared after each operation.
 - WETH backing equals measured fallback payouts and no WETH remains at the ETH farm.
 
-After every campaign, deposits are paused and assets delisted. All four actors
+After every campaign, deposits are paused and assets delisted. Delisting alone does not stop deposits into an active farm; the handler deposits while delisted and asserts paused deposits revert. All four actors
 withdraw every share, future rewards are cancelled, all earned claims are paid,
 free funds are recovered and spendable Treasury fees are spent. No principal,
 shares, integer credits or reward obligations may remain. Donations remain isolated.

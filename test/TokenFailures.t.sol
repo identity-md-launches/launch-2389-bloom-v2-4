@@ -174,13 +174,26 @@ contract TokenFailuresTest is FarmFixture {
         vm.expectRevert(RewardLedger.InvalidAmount.selector);
         farm.fundRewards(100 ether);
         vm.prank(alice);
-        vm.expectRevert(RewardLedger.InvalidAmount.selector);
+        vm.expectRevert(RewardLedger.InexactTransfer.selector);
         farm.deposit(100 ether, alice, 0);
         assertEq(bloom.balanceOf(owner), beforeOwner);
         assertEq(bloom.balanceOf(alice), beforeAlice);
         assertEq(farm.rewardReserve(), 0);
         assertEq(farm.accountedAssets(), 0);
         assertEq(farm.totalShares(), 0);
+    }
+
+    function testPartiallyTaxedDepositIsRefusedSoExitsCannotTakeOthersPrincipal() public {
+        _deposit(bob, 100 ether);
+        bloom.setFee(100);
+        uint256 beforeAlice = bloom.balanceOf(alice);
+        vm.prank(alice);
+        vm.expectRevert(RewardLedger.InexactTransfer.selector);
+        farm.deposit(100 ether, alice, 0);
+        assertEq(bloom.balanceOf(alice), beforeAlice);
+        assertEq(farm.sharesOf(alice), 0);
+        assertEq(farm.accountedAssets(), 100 ether);
+        assertEq(bloom.balanceOf(address(farm)), 100 ether);
     }
 
     function testTaxedRewardClaimCannotConsumeCreditAndCanBeRetried() public {

@@ -69,17 +69,26 @@ contract NetworkHandler is Test {
         return token == address(0) ? account.balance : IERC20(token).balanceOf(account);
     }
 
+    /// @dev The whitelist admits farms at registration only; the farm's PAUSE switch alone gates deposits.
     function _open(Farm f) internal view returns (bool) {
-        return !f.depositsPaused() && registry.isAssetWhitelisted(f.asset());
+        return !f.depositsPaused();
     }
 
     function deposit(uint256 which, uint256 who, uint256 beneficiary, uint256 raw) public {
         which %= 3;
         Farm f = farms[which];
-        if (!_open(f)) return;
         address payer = actors[who % 4];
         address receiver = actors[beneficiary % 4];
         uint256 amount = bound(raw, 1, which == 1 ? 1e28 : 1e22);
+        if (!_open(f)) {
+            uint256 heldBefore = _balance(f.asset(), address(f));
+            vm.prank(payer);
+            vm.expectRevert(Farm.DepositsPaused.selector);
+            if (which == 2) StakedETH(address(f)).deposit{value: amount}(receiver, 0);
+            else ERC20Farm(address(f)).deposit(amount, receiver, 0);
+            assertEq(_balance(f.asset(), address(f)), heldBefore, "paused deposit moved assets");
+            return;
+        }
         uint256 quote = f.previewDeposit(amount);
         uint256 beforeCustody = _balance(f.asset(), address(f));
         uint256 beforeShares = f.sharesOf(receiver);

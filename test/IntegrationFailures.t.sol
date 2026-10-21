@@ -94,9 +94,9 @@ contract IntegrationFailuresTest is NetworkFixture {
         assertEq(imd.allowance(address(simdFarm), address(vault)), 0);
     }
 
-    function testDisabledFarmRejectsBothSIMDInputsWithoutMovingAnyTokens() public {
+    function testPausedFarmRejectsBothSIMDInputsWithoutMovingAnyTokens() public {
         vm.prank(owner);
-        registry.whitelistAsset(address(simd), false);
+        simdFarm.setDepositsPaused(true);
         uint256 beforeIMD = imd.balanceOf(alice);
         uint256 beforeSIMD = simd.balanceOf(alice);
         vm.startPrank(alice);
@@ -108,6 +108,47 @@ contract IntegrationFailuresTest is NetworkFixture {
         assertEq(imd.balanceOf(alice), beforeIMD);
         assertEq(simd.balanceOf(alice), beforeSIMD);
         assertEq(simdFarm.totalShares(), 0);
+        assertEq(imd.allowance(address(simdFarm), address(vault)), 0);
+    }
+
+    function testDelistingAnActiveFarmsAssetDoesNotPauseItsDeposits() public {
+        // Whitelist governs registration only; the farm's own PAUSE power is the deposit switch.
+        vm.prank(owner);
+        registry.whitelistAsset(address(simd), false);
+        vm.prank(alice);
+        assertEq(simdFarm.deposit(10e24, alice, 10 ether), 10 ether);
+        assertEq(simdFarm.accountedAssets(), 10e24);
+    }
+
+    function testFarmSpecificStrandingRecipientsAreRejectedOnDepositWithdrawAndClaim() public {
+        vm.prank(alice);
+        ethFarm.deposit{value: 10 ether}(alice, 1);
+        vm.prank(alice);
+        simdFarm.deposit(10e24, alice, 1);
+        vm.startPrank(alice);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.withdraw(1 ether, payable(address(weth)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.deposit{value: 1 ether}(address(weth), 1);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.claimRewards(address(weth));
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.withdraw(1 ether, payable(address(imd)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.withdraw(1 ether, payable(address(simd)), 0);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.depositIMD(1 ether, address(imd), 0, 1);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        simdFarm.deposit(1e24, address(treasury), 1);
+        vm.stopPrank();
+        assertEq(ethFarm.sharesOf(alice), 10 ether);
+        assertEq(simdFarm.sharesOf(alice), 10 ether);
+        assertEq(weth.balanceOf(address(ethFarm)), 0);
+        vm.deal(address(ethFarm), 11 ether);
+        vm.prank(owner);
+        vm.expectRevert(RewardLedger.InvalidAddress.selector);
+        ethFarm.recoverExcess(address(0), payable(address(weth)), 1 ether);
+        assertEq(ethFarm.excessBalance(address(0)), 1 ether);
     }
 
     function testFallbackFailureRestoresNativeFeeAndAccruedRewardStateThenRetries() public {
@@ -208,31 +249,49 @@ contract IntegrationFailuresTest is NetworkFixture {
 }
 
 contract ActivationFailuresTest is FarmFixture {
-    function _registeredETH() internal returns (StakedETH target) {
-        target = new StakedETH(owner, address(registry), address(treasury), address(bloom));
+    function testCanonicalWETHIdentityAndDecimalsAreRequiredBeforeRegistration() public {
+        StakedETH target = new StakedETH(owner, address(registry), address(treasury), address(bloom));
         vm.startPrank(owner);
         registry.whitelistAsset(address(0), true);
+        // No WETH runtime: registration itself refuses, so the native asset slot stays free.
+        vm.expectRevert(Farm.InvalidDependency.selector);
         registry.registerFarm(address(target));
-        vm.stopPrank();
-    }
-
-    function testCanonicalWETHIdentityAndDecimalsAreRequiredBeforeActivation() public {
-        StakedETH target = _registeredETH();
-        vm.prank(owner);
-        vm.expectRevert(Farm.InvalidDependency.selector);
-        target.activate();
         vm.etch(MainnetAssets.WETH, OfficialWETH.runtime());
-        // Matching runtime with uninitialized metadata still must not activate.
-        vm.prank(owner);
+        // Matching runtime with uninitialized metadata still must not register.
+        vm.expectRevert(Farm.InvalidDependency.selector);
+        registry.registerFarm(address(target));
+        assertFalse(registry.isFarm(address(target)));
+        assertEq(registry.farmForAsset(address(0)), address(0));
+        vm.store(MainnetAssets.WETH, bytes32(uint256(2)), bytes32(uint256(18)));
+        registry.registerFarm(address(target));
+        // A dependency that drifts after registration is still re-checked by activate().
+        vm.mockCall(MainnetAssets.WETH, abi.encodeWithSignature("decimals()"), abi.encode(uint8(6)));
         vm.expectRevert(Farm.InvalidDependency.selector);
         target.activate();
-        assertFalse(target.active());
-        vm.store(MainnetAssets.WETH, bytes32(uint256(2)), bytes32(uint256(18)));
-        vm.prank(owner);
+        vm.clearMockedCalls();
         target.activate();
+        vm.stopPrank();
         assertTrue(target.active());
         assertTrue(target.depositsPaused());
         assertFalse(target.epochRunning());
+    }
+
+    function testWrongChainRefusesRegistrationAndActivation() public {
+        vm.etch(MainnetAssets.WETH, OfficialWETH.runtime());
+        vm.store(MainnetAssets.WETH, bytes32(uint256(2)), bytes32(uint256(18)));
+        StakedETH target = new StakedETH(owner, address(registry), address(treasury), address(bloom));
+        vm.startPrank(owner);
+        registry.whitelistAsset(address(0), true);
+        vm.chainId(8453);
+        vm.expectRevert(Farm.WrongChain.selector);
+        registry.registerFarm(address(target));
+        vm.chainId(1);
+        registry.registerFarm(address(target));
+        vm.chainId(8453);
+        vm.expectRevert(Farm.WrongChain.selector);
+        target.activate();
+        vm.stopPrank();
+        assertFalse(target.active());
     }
 
     function testOfficialSIMDMetadataAndCodeHashesMustAllMatch() public {
