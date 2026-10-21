@@ -1,0 +1,7 @@
+No files changed, compilation skipped
+Script ran successfully.
+Gas used: 2154742
+
+== Return ==
+treasury: contract BloomTreasury 0x5aAdFB43eF8dAF45DD80F4676345b7676f1D70e3
+registry: contract BloomFactory 0xf13D09eD3cbdD1C930d4de74808de1f33B6b3D4f

@@ -1,0 +1,24 @@
+{
+  "chainId": 1,
+  "requester": "0xDEA11b3A70b77134424d436f6eb455f1Abbd4449",
+  "transactionsSent": false,
+  "transactionReceipts": [],
+  "mainnetGasUsed": null,
+  "components": [
+    {"contract": "BloomTreasury", "status": "ready for approved launch", "address": null, "transactionHash": null},
+    {"contract": "BloomFactory", "status": "ready after Treasury address is established", "address": null, "transactionHash": null},
+    {"contract": "StakedBLOOM", "status": "pending real Job 2 BLOOM and verified decimals", "address": null, "transactionHash": null},
+    {"contract": "StakedSIMD", "status": "pending real Job 2 BLOOM", "address": null, "transactionHash": null},
+    {"contract": "StakedETH", "status": "pending real Job 2 BLOOM", "address": null, "transactionHash": null}
+  ],
+  "initialRoles": {
+    "allOwners": "requester constructor argument",
+    "pendingOwners": "none",
+    "workerPrivileges": "none",
+    "automaticRenunciation": false
+  },
+  "initialFarmState": {"active": false, "depositsPaused": true, "emissionsStarted": false},
+  "imdRedemption": "disabled: official one-block hold",
+  "approvalPolicy": "Explicit requester approval before each mainnet transaction",
+  "job2Dependencies": ["real BLOOM address and deployment receipt", "verified BLOOM code and decimals", "reviewed transfer behavior", "funding and owner-chosen epoch configuration"]
+}

@@ -1,0 +1,1218 @@
+{
+  "bytecodeHash": "none",
+  "chainId": 1,
+  "compiler": "0.8.26",
+  "contracts": {
+    "BloomFactory": {
+      "constructor": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "treasury_",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      "creationCodeBytesWithoutArguments": 4426,
+      "creationCodeKeccak256": "0x3742a91023db528d0230978307cffa89b08bf1d63f41af57f3751ab58506e0e2",
+      "immutableReferences": {
+        "45123": [
+          {
+            "length": 32,
+            "start": 371
+          },
+          {
+            "length": 32,
+            "start": 2893
+          }
+        ]
+      },
+      "runtimeBytes": 4051,
+      "runtimeTemplateKeccak256": "0x4eeaf2e6594c20a377a6f7418a8d375ac65ba0ec5b6b26a03a1872836f5e9f91",
+      "source": "src/BloomFactory.sol"
+    },
+    "BloomTreasury": {
+      "constructor": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner_",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      "creationCodeBytesWithoutArguments": 4903,
+      "creationCodeKeccak256": "0xa8c325208ba8a4bc71ff39fb4e4fb7d4be7ff2babb7526d31c8182d7e7e98ec0",
+      "immutableReferences": {},
+      "runtimeBytes": 4623,
+      "runtimeTemplateKeccak256": "0xce442c95713de5bc697d6e70fa778ca91c95cc86b3bb7e0ae2ce85d8352eab85",
+      "source": "src/BloomTreasury.sol"
+    },
+    "ERC20Farm": {
+      "constructor": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "registry_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "treasury_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "rewardToken_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "asset_",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "assetDecimals_",
+            "type": "uint8"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      "creationCodeBytesWithoutArguments": 15838,
+      "creationCodeKeccak256": "0x23bb4147452e46bb250b2b0b18cf0226ff585d7a27685cb99f785676534c4bc4",
+      "immutableReferences": {
+        "46388": [
+          {
+            "length": 32,
+            "start": 1615
+          },
+          {
+            "length": 32,
+            "start": 2872
+          },
+          {
+            "length": 32,
+            "start": 3465
+          },
+          {
+            "length": 32,
+            "start": 11439
+          }
+        ],
+        "46390": [
+          {
+            "length": 32,
+            "start": 1505
+          },
+          {
+            "length": 32,
+            "start": 3309
+          },
+          {
+            "length": 32,
+            "start": 3507
+          },
+          {
+            "length": 32,
+            "start": 12522
+          },
+          {
+            "length": 32,
+            "start": 12820
+          },
+          {
+            "length": 32,
+            "start": 12929
+          },
+          {
+            "length": 32,
+            "start": 13086
+          }
+        ],
+        "46392": [
+          {
+            "length": 32,
+            "start": 1272
+          },
+          {
+            "length": 32,
+            "start": 3017
+          },
+          {
+            "length": 32,
+            "start": 3892
+          },
+          {
+            "length": 32,
+            "start": 3979
+          },
+          {
+            "length": 32,
+            "start": 4211
+          },
+          {
+            "length": 32,
+            "start": 4851
+          },
+          {
+            "length": 32,
+            "start": 6524
+          },
+          {
+            "length": 32,
+            "start": 6652
+          },
+          {
+            "length": 32,
+            "start": 6725
+          },
+          {
+            "length": 32,
+            "start": 9060
+          },
+          {
+            "length": 32,
+            "start": 9722
+          },
+          {
+            "length": 32,
+            "start": 9788
+          },
+          {
+            "length": 32,
+            "start": 9915
+          },
+          {
+            "length": 32,
+            "start": 10027
+          },
+          {
+            "length": 32,
+            "start": 11399
+          },
+          {
+            "length": 32,
+            "start": 12476
+          },
+          {
+            "length": 32,
+            "start": 12658
+          },
+          {
+            "length": 32,
+            "start": 12786
+          },
+          {
+            "length": 32,
+            "start": 12880
+          },
+          {
+            "length": 32,
+            "start": 13052
+          },
+          {
+            "length": 32,
+            "start": 13156
+          },
+          {
+            "length": 32,
+            "start": 13317
+          }
+        ],
+        "46394": [
+          {
+            "length": 32,
+            "start": 2003
+          },
+          {
+            "length": 32,
+            "start": 3943
+          }
+        ],
+        "46396": [
+          {
+            "length": 32,
+            "start": 1719
+          },
+          {
+            "length": 32,
+            "start": 5093
+          },
+          {
+            "length": 32,
+            "start": 8227
+          },
+          {
+            "length": 32,
+            "start": 11837
+          }
+        ],
+        "46398": [
+          {
+            "length": 32,
+            "start": 2042
+          },
+          {
+            "length": 32,
+            "start": 5139
+          },
+          {
+            "length": 32,
+            "start": 8181
+          },
+          {
+            "length": 32,
+            "start": 11901
+          }
+        ],
+        "47501": [
+          {
+            "length": 32,
+            "start": 2294
+          },
+          {
+            "length": 32,
+            "start": 3153
+          },
+          {
+            "length": 32,
+            "start": 3685
+          },
+          {
+            "length": 32,
+            "start": 3729
+          },
+          {
+            "length": 32,
+            "start": 4175
+          },
+          {
+            "length": 32,
+            "start": 4463
+          },
+          {
+            "length": 32,
+            "start": 4913
+          },
+          {
+            "length": 32,
+            "start": 5604
+          },
+          {
+            "length": 32,
+            "start": 5732
+          },
+          {
+            "length": 32,
+            "start": 5795
+          },
+          {
+            "length": 32,
+            "start": 8054
+          },
+          {
+            "length": 32,
+            "start": 9985
+          },
+          {
+            "length": 32,
+            "start": 10105
+          }
+        ]
+      },
+      "runtimeBytes": 14407,
+      "runtimeTemplateKeccak256": "0xf9b5c9b72e8e46276c8460e4fd918e2637cbc7091264c1f29817512c55971eca",
+      "source": "src/core/ERC20Farm.sol"
+    },
+    "StakedBLOOM": {
+      "constructor": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "registry_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "treasury_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "bloom_",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "bloomDecimals_",
+            "type": "uint8"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      "creationCodeBytesWithoutArguments": 15953,
+      "creationCodeKeccak256": "0x835b6b7513aea54f4608d97db60e9337ca045709d80fcb728fa5c1be64cca7fc",
+      "immutableReferences": {
+        "46388": [
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2938
+          },
+          {
+            "length": 32,
+            "start": 3531
+          },
+          {
+            "length": 32,
+            "start": 11505
+          }
+        ],
+        "46390": [
+          {
+            "length": 32,
+            "start": 1571
+          },
+          {
+            "length": 32,
+            "start": 3375
+          },
+          {
+            "length": 32,
+            "start": 3573
+          },
+          {
+            "length": 32,
+            "start": 12588
+          },
+          {
+            "length": 32,
+            "start": 12886
+          },
+          {
+            "length": 32,
+            "start": 12995
+          },
+          {
+            "length": 32,
+            "start": 13152
+          }
+        ],
+        "46392": [
+          {
+            "length": 32,
+            "start": 1338
+          },
+          {
+            "length": 32,
+            "start": 3083
+          },
+          {
+            "length": 32,
+            "start": 3958
+          },
+          {
+            "length": 32,
+            "start": 4045
+          },
+          {
+            "length": 32,
+            "start": 4277
+          },
+          {
+            "length": 32,
+            "start": 4917
+          },
+          {
+            "length": 32,
+            "start": 6590
+          },
+          {
+            "length": 32,
+            "start": 6718
+          },
+          {
+            "length": 32,
+            "start": 6791
+          },
+          {
+            "length": 32,
+            "start": 9126
+          },
+          {
+            "length": 32,
+            "start": 9788
+          },
+          {
+            "length": 32,
+            "start": 9854
+          },
+          {
+            "length": 32,
+            "start": 9981
+          },
+          {
+            "length": 32,
+            "start": 10093
+          },
+          {
+            "length": 32,
+            "start": 11465
+          },
+          {
+            "length": 32,
+            "start": 12542
+          },
+          {
+            "length": 32,
+            "start": 12724
+          },
+          {
+            "length": 32,
+            "start": 12852
+          },
+          {
+            "length": 32,
+            "start": 12946
+          },
+          {
+            "length": 32,
+            "start": 13118
+          },
+          {
+            "length": 32,
+            "start": 13222
+          },
+          {
+            "length": 32,
+            "start": 13383
+          }
+        ],
+        "46394": [
+          {
+            "length": 32,
+            "start": 2069
+          },
+          {
+            "length": 32,
+            "start": 4009
+          }
+        ],
+        "46396": [
+          {
+            "length": 32,
+            "start": 1785
+          },
+          {
+            "length": 32,
+            "start": 5159
+          },
+          {
+            "length": 32,
+            "start": 8293
+          },
+          {
+            "length": 32,
+            "start": 11903
+          }
+        ],
+        "46398": [
+          {
+            "length": 32,
+            "start": 2108
+          },
+          {
+            "length": 32,
+            "start": 5205
+          },
+          {
+            "length": 32,
+            "start": 8247
+          },
+          {
+            "length": 32,
+            "start": 11967
+          }
+        ],
+        "47501": [
+          {
+            "length": 32,
+            "start": 2360
+          },
+          {
+            "length": 32,
+            "start": 3219
+          },
+          {
+            "length": 32,
+            "start": 3751
+          },
+          {
+            "length": 32,
+            "start": 3795
+          },
+          {
+            "length": 32,
+            "start": 4241
+          },
+          {
+            "length": 32,
+            "start": 4529
+          },
+          {
+            "length": 32,
+            "start": 4979
+          },
+          {
+            "length": 32,
+            "start": 5670
+          },
+          {
+            "length": 32,
+            "start": 5798
+          },
+          {
+            "length": 32,
+            "start": 5861
+          },
+          {
+            "length": 32,
+            "start": 8120
+          },
+          {
+            "length": 32,
+            "start": 10051
+          },
+          {
+            "length": 32,
+            "start": 10171
+          }
+        ]
+      },
+      "runtimeBytes": 14526,
+      "runtimeTemplateKeccak256": "0x8ea271b8343e9e51a524fd1ebbfabc0af83f2d6da4b6905925c162443378ccbf",
+      "source": "src/StakedBLOOM.sol"
+    },
+    "StakedETH": {
+      "constructor": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "registry_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "treasury_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "bloom_",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      "creationCodeBytesWithoutArguments": 17180,
+      "creationCodeKeccak256": "0xb45c0c749ad6cfa6132139a14c8c5fccb0d666ac9bf297f8786738dcefc5fbdf",
+      "immutableReferences": {
+        "46388": [
+          {
+            "length": 32,
+            "start": 2104
+          },
+          {
+            "length": 32,
+            "start": 3894
+          },
+          {
+            "length": 32,
+            "start": 4487
+          },
+          {
+            "length": 32,
+            "start": 11742
+          }
+        ],
+        "46390": [
+          {
+            "length": 32,
+            "start": 1898
+          },
+          {
+            "length": 32,
+            "start": 4331
+          },
+          {
+            "length": 32,
+            "start": 4529
+          },
+          {
+            "length": 32,
+            "start": 13399
+          },
+          {
+            "length": 32,
+            "start": 13697
+          },
+          {
+            "length": 32,
+            "start": 13806
+          },
+          {
+            "length": 32,
+            "start": 13963
+          }
+        ],
+        "46392": [
+          {
+            "length": 32,
+            "start": 1502
+          },
+          {
+            "length": 32,
+            "start": 4039
+          },
+          {
+            "length": 32,
+            "start": 4914
+          },
+          {
+            "length": 32,
+            "start": 5001
+          },
+          {
+            "length": 32,
+            "start": 5233
+          },
+          {
+            "length": 32,
+            "start": 5873
+          },
+          {
+            "length": 32,
+            "start": 10589
+          },
+          {
+            "length": 32,
+            "start": 10655
+          },
+          {
+            "length": 32,
+            "start": 10782
+          },
+          {
+            "length": 32,
+            "start": 10894
+          },
+          {
+            "length": 32,
+            "start": 11702
+          },
+          {
+            "length": 32,
+            "start": 13353
+          },
+          {
+            "length": 32,
+            "start": 13535
+          },
+          {
+            "length": 32,
+            "start": 13663
+          },
+          {
+            "length": 32,
+            "start": 13757
+          },
+          {
+            "length": 32,
+            "start": 13929
+          },
+          {
+            "length": 32,
+            "start": 14033
+          }
+        ],
+        "46394": [
+          {
+            "length": 32,
+            "start": 2809
+          },
+          {
+            "length": 32,
+            "start": 4965
+          }
+        ],
+        "46396": [
+          {
+            "length": 32,
+            "start": 2268
+          },
+          {
+            "length": 32,
+            "start": 6179
+          },
+          {
+            "length": 32,
+            "start": 8880
+          },
+          {
+            "length": 32,
+            "start": 12140
+          }
+        ],
+        "46398": [
+          {
+            "length": 32,
+            "start": 2860
+          },
+          {
+            "length": 32,
+            "start": 6225
+          },
+          {
+            "length": 32,
+            "start": 8834
+          },
+          {
+            "length": 32,
+            "start": 12204
+          }
+        ],
+        "47501": [
+          {
+            "length": 32,
+            "start": 3292
+          },
+          {
+            "length": 32,
+            "start": 4175
+          },
+          {
+            "length": 32,
+            "start": 4707
+          },
+          {
+            "length": 32,
+            "start": 4751
+          },
+          {
+            "length": 32,
+            "start": 5197
+          },
+          {
+            "length": 32,
+            "start": 5485
+          },
+          {
+            "length": 32,
+            "start": 5935
+          },
+          {
+            "length": 32,
+            "start": 6690
+          },
+          {
+            "length": 32,
+            "start": 6818
+          },
+          {
+            "length": 32,
+            "start": 6881
+          },
+          {
+            "length": 32,
+            "start": 8707
+          },
+          {
+            "length": 32,
+            "start": 9906
+          },
+          {
+            "length": 32,
+            "start": 10852
+          },
+          {
+            "length": 32,
+            "start": 10972
+          }
+        ]
+      },
+      "runtimeBytes": 15858,
+      "runtimeTemplateKeccak256": "0xc7dfe8d2ad08db30353e627ecc7feb4171d5bf6a573ff4cc07e19d4f20373019",
+      "source": "src/StakedETH.sol"
+    },
+    "StakedSIMD": {
+      "constructor": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "registry_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "treasury_",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "bloom_",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      "creationCodeBytesWithoutArguments": 18076,
+      "creationCodeKeccak256": "0x9e126c1312264fb8cd6655f23840235aa280e6b5a6d6508f6d22143a2a56c85b",
+      "immutableReferences": {
+        "46388": [
+          {
+            "length": 32,
+            "start": 1731
+          },
+          {
+            "length": 32,
+            "start": 3053
+          },
+          {
+            "length": 32,
+            "start": 3646
+          },
+          {
+            "length": 32,
+            "start": 13431
+          }
+        ],
+        "46390": [
+          {
+            "length": 32,
+            "start": 1614
+          },
+          {
+            "length": 32,
+            "start": 3490
+          },
+          {
+            "length": 32,
+            "start": 3688
+          },
+          {
+            "length": 32,
+            "start": 14657
+          },
+          {
+            "length": 32,
+            "start": 14955
+          },
+          {
+            "length": 32,
+            "start": 15064
+          },
+          {
+            "length": 32,
+            "start": 15221
+          }
+        ],
+        "46392": [
+          {
+            "length": 32,
+            "start": 1381
+          },
+          {
+            "length": 32,
+            "start": 3198
+          },
+          {
+            "length": 32,
+            "start": 4073
+          },
+          {
+            "length": 32,
+            "start": 4160
+          },
+          {
+            "length": 32,
+            "start": 4392
+          },
+          {
+            "length": 32,
+            "start": 5032
+          },
+          {
+            "length": 32,
+            "start": 6831
+          },
+          {
+            "length": 32,
+            "start": 7157
+          },
+          {
+            "length": 32,
+            "start": 7222
+          },
+          {
+            "length": 32,
+            "start": 7363
+          },
+          {
+            "length": 32,
+            "start": 7578
+          },
+          {
+            "length": 32,
+            "start": 7916
+          },
+          {
+            "length": 32,
+            "start": 8044
+          },
+          {
+            "length": 32,
+            "start": 8117
+          },
+          {
+            "length": 32,
+            "start": 10644
+          },
+          {
+            "length": 32,
+            "start": 10861
+          },
+          {
+            "length": 32,
+            "start": 11025
+          },
+          {
+            "length": 32,
+            "start": 11714
+          },
+          {
+            "length": 32,
+            "start": 11780
+          },
+          {
+            "length": 32,
+            "start": 11907
+          },
+          {
+            "length": 32,
+            "start": 12019
+          },
+          {
+            "length": 32,
+            "start": 13391
+          },
+          {
+            "length": 32,
+            "start": 14611
+          },
+          {
+            "length": 32,
+            "start": 14793
+          },
+          {
+            "length": 32,
+            "start": 14921
+          },
+          {
+            "length": 32,
+            "start": 15015
+          },
+          {
+            "length": 32,
+            "start": 15187
+          },
+          {
+            "length": 32,
+            "start": 15291
+          },
+          {
+            "length": 32,
+            "start": 15452
+          },
+          {
+            "length": 32,
+            "start": 15492
+          }
+        ],
+        "46394": [
+          {
+            "length": 32,
+            "start": 2138
+          },
+          {
+            "length": 32,
+            "start": 4124
+          }
+        ],
+        "46396": [
+          {
+            "length": 32,
+            "start": 1835
+          },
+          {
+            "length": 32,
+            "start": 5274
+          },
+          {
+            "length": 32,
+            "start": 9644
+          },
+          {
+            "length": 32,
+            "start": 13972
+          }
+        ],
+        "46398": [
+          {
+            "length": 32,
+            "start": 2177
+          },
+          {
+            "length": 32,
+            "start": 5320
+          },
+          {
+            "length": 32,
+            "start": 9598
+          },
+          {
+            "length": 32,
+            "start": 14036
+          }
+        ],
+        "47501": [
+          {
+            "length": 32,
+            "start": 2475
+          },
+          {
+            "length": 32,
+            "start": 3334
+          },
+          {
+            "length": 32,
+            "start": 3866
+          },
+          {
+            "length": 32,
+            "start": 3910
+          },
+          {
+            "length": 32,
+            "start": 4356
+          },
+          {
+            "length": 32,
+            "start": 4644
+          },
+          {
+            "length": 32,
+            "start": 5094
+          },
+          {
+            "length": 32,
+            "start": 5785
+          },
+          {
+            "length": 32,
+            "start": 5913
+          },
+          {
+            "length": 32,
+            "start": 5976
+          },
+          {
+            "length": 32,
+            "start": 9471
+          },
+          {
+            "length": 32,
+            "start": 10790
+          },
+          {
+            "length": 32,
+            "start": 10903
+          },
+          {
+            "length": 32,
+            "start": 11977
+          },
+          {
+            "length": 32,
+            "start": 12097
+          }
+        ]
+      },
+      "runtimeBytes": 16584,
+      "runtimeTemplateKeccak256": "0x490f8eb2a1ef82b9b08b1d0b01b5951fba58f5d17383ce55fad53278b62d4986",
+      "source": "src/StakedSIMD.sol"
+    }
+  },
+  "evmVersion": "cancun",
+  "note": "Runtime hashes are compiler templates with zeroed immutable slots, NOT deployed hashes.",
+  "optimizerRuns": 200,
+  "sourceSha256": {
+    "foundry.toml": "ec5c66f487fbdae31c57b9f726cf8e97718fd557123858824dbd5e43b8f8aee9",
+    "remappings.txt": "79f11452d3ebfaa9c9c1cf7afa0dce42dda3bced35f7047ea30e850a1a61cfb1",
+    "script/DeployBLOOMFarm.s.sol": "91d87d8d1d4ce4b9af0c6148813ec7b77e0a313a10b26463e71babbc70634f9c",
+    "script/DeployCore.s.sol": "25b83b00038447a5031948341facfa2549187ecf4545ec3b008f7fdb01c1663a",
+    "script/DeployETHFarm.s.sol": "bcc4d1afb1fd1dda38f7c6613fcad053d1583d6dd058cdd1fe95c495d0a7b438",
+    "script/DeploySIMDFarm.s.sol": "38e5714c9fd92082a60ae94eb1e88613e7c925a4c4fb6724122fc8b7d9d26b1b",
+    "script/DeploymentInputs.sol": "c55be426fb496601cb79a74ba45ece039a69091461dee5614f08c9783070010c",
+    "scripts/export_artifacts.py": "edbe220a0b81d420075f63007ba534dee1a6d8a5ff922d506564c07d724cca3d",
+    "scripts/prepare_deployment.py": "cb819f4f9f2c8670e81921686459cbc72a6176014b94b625831952b1e69f7ed1",
+    "scripts/verify_mainnet.py": "55b05e158f84ba9163e82a4b278a281ce08b41ff533693a46e871484f3d11076",
+    "src/BloomFactory.sol": "6dacacaeaae9d8b8abd870a429e92f13897747ee44ec4a377e3443a94cf217d7",
+    "src/BloomTreasury.sol": "dfefdf58e368ea97a92337f755a3c201efb4b5f38fe318ea652a522db417bf96",
+    "src/MainnetAssets.sol": "0d00b852ae11c9517309625fac177addcfe1b90a77192f1e7993312951247944",
+    "src/StakedBLOOM.sol": "efac3f865a25ee39e1fbdaa7715e57821171f80779538e500b5b21dec643f758",
+    "src/StakedETH.sol": "000f00080e18b3d5a64bf5fea396321ae109c45c379c2046cab8b147d9c8e917",
+    "src/StakedSIMD.sol": "825bb4a6c61af00fcd693a23183cec5bf38e6647f4e504ccd008e18e1f0729d3",
+    "src/core/ERC20Farm.sol": "fa4922fdfbc4c6e2e3cef89bf1484c90066dd03a594b8cb9a481097eea34d3a5",
+    "src/core/Farm.sol": "e4099a6c2a7404952e2b1785fadbefa45e4061546ad39429fa8a96d749188fd1",
+    "src/core/Managed.sol": "0dcc5d5601c70acc47b48219e338a08b68f93179fef4d3ee4d4eff3fe12087cb",
+    "src/core/RewardLedger.sol": "a1bbc71cdc1b80d6089bdcc162eb45351490e4e828ce58f7624ea02e994fe4f6",
+    "src/interfaces/IBloom.sol": "6c99f43c7a7c8548bda6a0c68ee252748a9a6224ae24657631be0065e6b2f327"
+  }
+}

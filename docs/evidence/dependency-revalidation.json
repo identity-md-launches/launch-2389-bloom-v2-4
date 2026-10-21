@@ -1,0 +1,31 @@
+{
+  "chainId": 1,
+  "block": 26241812,
+  "dependencies": {
+    "IMD": {
+      "address": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+      "codeHash": "0x79a1ae149d27d4aae006d4dd75cb834222c9623799bbf34359428aaf66fec3bf",
+      "decimals": "18",
+      "symbol": "\"IMD\""
+    },
+    "sIMD": {
+      "address": "0x9efa934d9fad4ae28c998a40195646b965a97247",
+      "codeHash": "0xe8333ecf3ae9263b14d6a1ab59d6f384c16d8609c1725edf31b0dcd1780280e5",
+      "decimals": "24",
+      "symbol": "\"sIMD\"",
+      "asset()(address)": "0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7",
+      "owner()(address)": "0x0000000000000000000000000000000000000000",
+      "paused()(bool)": "false",
+      "totalAssets()(uint256)": "1893897850009093701906658 [1.893e24]",
+      "totalSupply()(uint256)": "237433265352441504991101829951 [2.374e29]",
+      "IMD per 1 sIMD (raw)": "7976548051082172930 [7.976e18]",
+      "sIMD per 1 IMD (raw)": "125367514066981727757597 [1.253e23]"
+    },
+    "WETH": {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "codeHash": "0xd0a06b12ac47863b5c7be4185c2deaad1c61557033f56c7d4ea74429cbb25e23",
+      "decimals": "18",
+      "symbol": "\"WETH\""
+    }
+  }
+}
