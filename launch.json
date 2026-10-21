@@ -1,0 +1,19 @@
+{
+  "kind": "evm_contracts",
+  "contracts": [
+    {
+      "contract": "BloomTreasury",
+      "constructorArgs": [
+        "$owner"
+      ]
+    },
+    {
+      "contract": "BloomFactory",
+      "constructorArgs": [
+        "$owner",
+        "$contract:BloomTreasury"
+      ]
+    }
+  ],
+  "notes": "Ethereum mainnet Job 1 deploys only BloomTreasury and BloomFactory, in dependency order, with the requester as the explicit owner of both. Constructors assign no worker roles, send no ETH and perform no external initialization calls. BloomFactory stores the Treasury address; Treasury.registry and Factory.bloom remain unbound, with no registered farms. Treasury spending is limited to recorded fees actually received. The requester must later bind Treasury to Factory using the one-time owner-only bindRegistry function. StakedBLOOM, StakedSIMD and StakedETH are present in the accepted source but are deferred because their constructors require the real Job 2 BLOOM address; StakedBLOOM also requires its verified decimals. No placeholder token, farm, funding or initialization transaction is included. Job 2 must provide the real BLOOM deployment receipt, verified source/ABI, address, decimals and reviewed transfer behavior. Subsequent requester-approved activation: verify BLOOM; bind it once in Factory; whitelist assets; deploy and register the farms; activate with deposits still paused and emissions stopped; fund each farm separately; configure owner-chosen reward amounts and durations; enable deposits; explicitly start emissions. Funding and configuration alone produce no pre-start accrual. StakedSIMD uses the official sIMD integration in the accepted source; IMD redemption is disabled because of the official redemption hold, while default withdrawals deliver sIMD. Confirm the requester owner and obtain explicit approval before every mainnet transaction. This manifest is a deployment plan, not evidence of deployment or transaction approval; addresses, receipts, gas and final roles must be recorded and verified after approved execution. No automatic role renunciation."
+}
